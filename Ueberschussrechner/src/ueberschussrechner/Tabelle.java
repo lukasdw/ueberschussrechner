@@ -14,7 +14,7 @@ public class Tabelle {
     }
     
     public void tabelleSortieren(){
-        
+         
     }
     
     public void ueberschussBerechnen(){
