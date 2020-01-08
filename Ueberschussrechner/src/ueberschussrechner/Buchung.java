@@ -10,7 +10,7 @@ public class Buchung {
 
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsdatum = buchungsdatum;
-        this.buchungsdatum = buchungsdatum;
+        this.buchungsnummer = buchungsnummer;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
         this.ausgaben = ausgaben;
