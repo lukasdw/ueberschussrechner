@@ -22,4 +22,44 @@ public class Buchung {
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
     }
+
+    public double getAusgaben() {
+        return ausgaben;
+    }
+
+    public void setAusgaben(double ausgaben) {
+        this.ausgaben = ausgaben;
+    }
+
+    public double getEinnahmen() {
+        return einnahmen;
+    }
+
+    public void setEinnahmen(double einnahmen) {
+        this.einnahmen = einnahmen;
+    }
+
+    public String getBuchungsdatum() {
+        return buchungsdatum;
+    }
+
+    public void setBuchungsdatum(String buchungsdatum) {
+        this.buchungsdatum = buchungsdatum;
+    }
+
+    public String getBemerkung() {
+        return bemerkung;
+    }
+
+    public void setBemerkung(String bemerkung) {
+        this.bemerkung = bemerkung;
+    }
+
+    public int getBuchungsnummer() {
+        return buchungsnummer;
+    }
+
+    public void setBuchungsnummer(int buchungsnummer) {
+        this.buchungsnummer = buchungsnummer;
+    }
 }
