@@ -7,17 +7,13 @@ public class Ueberschussrechner {
     public static void main(String[] args) {
         GUI gui = new GUI();
         gui.setVisible(true);
-
         Tabelle tabelle = new Tabelle();
-        //tabelle.csvEinlesen();
-        tabelle.ueberschussBerechnen();
-        tabelle.ausgabe();
+        gui.setTabelle(tabelle);
+        
         //tabelle.sortieren();
         //tabelle.drucken();
         //tabelle.csvSpeichern();
-        tabelle.getBuchungListe();
+        //tabelle.getBuchungListe();
 
-        gui.setTabelle(tabelle);
-        gui.addRowToJTable();
     }
 }

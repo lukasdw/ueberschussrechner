@@ -122,6 +122,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonLadenSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenSpeichernActionPerformed
         tabelle.csvEinlesen();
+        setTabelle(tabelle);
+        addRowToJTable();
+        tabelle.ueberschussBerechnen();
     }//GEN-LAST:event_jButtonLadenSpeichernActionPerformed
 
     /**
