@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Tabelle {
+public class Tabelle implements Comparable<Tabelle> {
 
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
     private Drucken drucker = new Drucken();
@@ -68,8 +68,6 @@ public class Tabelle {
     }
 
     public void sortieren() {
-        // Heillige Scheiße ist das kompliziert. Man muss die ArrayListe nach den Objekten sortieren.
-        // https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
     }
 
     public void ueberschussBerechnen() {
