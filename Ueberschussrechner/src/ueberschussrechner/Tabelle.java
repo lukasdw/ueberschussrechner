@@ -14,7 +14,6 @@ public class Tabelle {
 
     public void csvEinlesen() {
         String line = "";
-
         // JFileChooser-Objekt erstellen
         JFileChooser chooser = new JFileChooser();
         // Dialog zum Oeffnen von Dateien anzeigen
