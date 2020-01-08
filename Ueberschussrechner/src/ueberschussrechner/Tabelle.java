@@ -8,12 +8,12 @@ import javax.swing.*;
 public class Tabelle {
 
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
+    private Drucken drucker = new Drucken();
     private String dateipfad;
     private double ueberschuss;
-    private int BuchungsnummerCounter;
+    private int BuchungsnummerCounter = 0;
 
     public void csvEinlesen() {
-        int counter = 0;
         String line = "";
 
         // JFileChooser-Objekt erstellen
@@ -30,22 +30,13 @@ public class Tabelle {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
-                this.buchungListe.add(counter, new Buchung());
-                counter++;
-
-                // Abfrage zur Überprüfung, ob die Buchung eine Ausgabe oder Einnahme ist.
-                if (Double.parseDouble(buffer[3]) > 0) {
-                    this.buchungListe.get(counter).buchungAusgaben(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]));
-                } else {
-                    this.buchungListe.get(counter).buchungEinnahmen(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[4]));
-                }
+                this.buchungListe.add(this.BuchungsnummerCounter, new Buchung(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.BuchungsnummerCounter++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(this.dateipfad);
-        ueberschussBerechnen();
     }
 
     public void csvSpeichern() {
@@ -63,5 +54,16 @@ public class Tabelle {
             summe = this.buchungListe.get(i).getEinnahmen() + summe;
         }
         this.ueberschuss = summe;
+    }
+
+    public void drucken() {
+        drucker.addString("Überschussrechner");
+        drucker.addString("Buchungsdatum    Buchungsnummer  Bemerkung   Einnahmen   Ausgaben");
+        drucker.druckeSeite("nix", false);
+
+        //this ist ein frame/panel/container, es darf halt nicht ''null'' sein! 
+        //false steht für den Rahmen. Dass der Titel ausdruckt wird, habe ich noch nicht geschafft!
+        //standardmäßig ist Hochformat
+        //printer.druckeSeite(this,"nix",false,true); //würde es im Querformat drucken
     }
 }

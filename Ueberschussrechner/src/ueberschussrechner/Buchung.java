@@ -8,21 +8,14 @@ public class Buchung {
     private String bemerkung;
     private int buchungsnummer;
 
-    public void buchungAusgaben(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen) {
+    public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsdatum = buchungsdatum;
         this.buchungsdatum = buchungsdatum;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
-        
+        this.ausgaben = ausgaben;
     }
-
-    public void buchungEinnahmen(int buchungsnummer, String buchungsdatum, String bemerkung, double ausgaben) {
-        this.buchungsdatum = buchungsdatum;
-        this.buchungsdatum = buchungsdatum;
-        this.bemerkung = bemerkung;
-        this.einnahmen = einnahmen;
-    }
-
+    
     public double getAusgaben() {
         return ausgaben;
     }

@@ -15,6 +15,7 @@ public class Drucken {
     private String[] data;
     private ArrayList ar = null;
     private Font myFont = new Font("SansSerif", Font.PLAIN, 12);
+    private JFrame Jdrucker = new JFrame();
 
     /**
      * *************************************************************************
@@ -61,8 +62,8 @@ public class Drucken {
         }
     }
 
-    void druckeSeite(JFrame f, String title, boolean bRand) {
-        druckeSeite(f, title, bRand, false);
+    void druckeSeite(String title, boolean bRand) {
+        druckeSeite(title, bRand, false);
     }
 
     /**
@@ -70,7 +71,7 @@ public class Drucken {
      *
      * Druckt schließlich die Seite und ob ein Rand dabei ist oder nicht
      *
-     * @param f JFrame
+     * @param Jdrucker JFrame
      *
      * @param title Titel
      *
@@ -80,12 +81,7 @@ public class Drucken {
      *
      **************************************************************************
      */
-    void druckeSeite(JFrame f, String title, boolean bRand, boolean bLandscape) {
-
-        //falls der Frame null ist
-        if (f == null) {
-            f = new JFrame();
-        }
+    void druckeSeite(String title, boolean bRand, boolean bLandscape) {
 
         PageAttributes page = new PageAttributes();
 
@@ -95,12 +91,12 @@ public class Drucken {
             page.setOrientationRequested(PageAttributes.OrientationRequestedType.PORTRAIT);
         }
 
-        PrintJob prjob = f.getToolkit().getPrintJob(f, title, new JobAttributes(), page);
+        PrintJob prjob = Jdrucker.getToolkit().getPrintJob(Jdrucker, title, new JobAttributes(), page);
 
         if (null != prjob) {
-            final int iScreenResol = f.getToolkit().getScreenResolution();
+            final int iScreenResol = Jdrucker.getToolkit().getScreenResolution();
             final int iPageResol = prjob.getPageResolution();
-            final Dimension dimScreenSize = f.getToolkit().getScreenSize();
+            final Dimension dimScreenSize = Jdrucker.getToolkit().getScreenSize();
             final Dimension dimPageDimension = prjob.getPageDimension();
             Graphics pg = prjob.getGraphics();
 
@@ -218,8 +214,5 @@ public class Drucken {
      */
     public void setFont(Font font) {
         this.myFont = font;
-    }
-
-    public void test() {
     }
 }
