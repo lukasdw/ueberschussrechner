@@ -24,7 +24,7 @@ public class Tabelle {
             this.dateipfad = chooser.getSelectedFile().getAbsolutePath();
         }
 
-        try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
@@ -37,8 +37,36 @@ public class Tabelle {
         System.out.println(this.dateipfad);
     }
 
-    //https://www.gutefrage.net/frage/kann-man-eine-array--list-in-einer-csv--datei-txt-speichern
+    //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
     public void csvSpeichern() {
+        String dateipfadSave = null;
+        // JFileChooser-Objekt erstellen
+        JFileChooser chooser = new JFileChooser();
+        // Dialog zum Oeffnen von Dateien anzeigen
+        int csvFileInt = chooser.showSaveDialog(null);
+        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+        if (csvFileInt == JFileChooser.APPROVE_OPTION) {
+            // Ausgabe der ausgewaehlten Datei
+            dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
+        }
+        
+        try {    
+            BufferedWriter writer = new BufferedWriter(new FileWriter(dateipfadSave));
+            for (int i = 0; i < buchungListe.size(); i++) {
+                writer.write(buchungListe.get(i).getBuchungsnummer()
+                        + ";" + buchungListe.get(i).getBuchungsdatum()
+                        + ";" + buchungListe.get(i).getBemerkung()
+                        + ";" + buchungListe.get(i).getEinnahmen()
+                        + ";" + buchungListe.get(i).getAusgaben());
+                writer.newLine();
+            }
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter(new FileWriter(dateipfad));
@@ -53,7 +81,7 @@ public class Tabelle {
             if (printWriter != null) {
                 printWriter.close();
             }
-        }
+        }*/
     }
 
     public void sortieren() {

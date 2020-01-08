@@ -20,34 +20,22 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         JLabelUeberschrift = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPaneTabelle = new javax.swing.JScrollPane();
         jTableTabelle = new javax.swing.JTable();
         jButtonDrucken = new javax.swing.JButton();
-        jButtonLadenSpeichern = new javax.swing.JButton();
-
-        jButton3.setText("Drucken");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Drucken");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jButtonLaden = new javax.swing.JButton();
+        jButtonSpeichern = new javax.swing.JButton();
+        jButtonHilfe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
+        JLabelUeberschrift.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelUeberschrift.setText("Überschussrechner");
 
         jTableTabelle.setAutoCreateRowSorter(true);
+        jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -56,7 +44,7 @@ public class GUI extends javax.swing.JFrame {
                 "Buchungsdatum", "Buchungsnummer", "Bemerkung", "Einnahmen", "Ausgaben"
             }
         ));
-        jScrollPane1.setViewportView(jTableTabelle);
+        jScrollPaneTabelle.setViewportView(jTableTabelle);
 
         jButtonDrucken.setText("Drucken");
         jButtonDrucken.addActionListener(new java.awt.event.ActionListener() {
@@ -65,10 +53,25 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonLadenSpeichern.setText("Datei laden");
-        jButtonLadenSpeichern.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLaden.setText("Datei laden");
+        jButtonLaden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLadenSpeichernActionPerformed(evt);
+                jButtonLadenActionPerformed(evt);
+            }
+        });
+
+        jButtonSpeichern.setText("Datei speichern");
+        jButtonSpeichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSpeichernActionPerformed(evt);
+            }
+        });
+
+        jButtonHilfe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonHilfe.setText("?");
+        jButtonHilfe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHilfeActionPerformed(evt);
             }
         });
 
@@ -78,31 +81,33 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonDrucken)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonLadenSpeichern)))
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(JLabelUeberschrift)
-                        .addGap(234, 234, 234))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSpeichern)))
+                .addGap(50, 50, 50))
+            .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(JLabelUeberschrift)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLaden)
                     .addComponent(jButtonDrucken)
-                    .addComponent(jButtonLadenSpeichern))
-                .addGap(29, 29, 29))
+                    .addComponent(jButtonHilfe))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -112,20 +117,20 @@ public class GUI extends javax.swing.JFrame {
         tabelle.drucken();
     }//GEN-LAST:event_jButtonDruckenActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButtonLadenSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenSpeichernActionPerformed
+    private void jButtonLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenActionPerformed
         tabelle.csvEinlesen();
         setTabelle(tabelle);
         addRowToJTable();
         tabelle.ueberschussBerechnen();
-    }//GEN-LAST:event_jButtonLadenSpeichernActionPerformed
+    }//GEN-LAST:event_jButtonLadenActionPerformed
+
+    private void jButtonSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeichernActionPerformed
+        tabelle.csvSpeichern();
+    }//GEN-LAST:event_jButtonSpeichernActionPerformed
+
+    private void jButtonHilfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHilfeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHilfeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,11 +189,11 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonDrucken;
-    private javax.swing.JButton jButtonLadenSpeichern;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jButtonHilfe;
+    private javax.swing.JButton jButtonLaden;
+    private javax.swing.JButton jButtonSpeichern;
+    private javax.swing.JScrollPane jScrollPaneTabelle;
     private javax.swing.JTable jTableTabelle;
     // End of variables declaration//GEN-END:variables
 }
