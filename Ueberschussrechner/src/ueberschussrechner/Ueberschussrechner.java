@@ -9,11 +9,5 @@ public class Ueberschussrechner {
         gui.setVisible(true);
         Tabelle tabelle = new Tabelle();
         gui.setTabelle(tabelle);
-        
-        //tabelle.sortieren();
-        //tabelle.drucken();
-        //tabelle.csvSpeichern();
-        //tabelle.getBuchungListe();
-
     }
 }
