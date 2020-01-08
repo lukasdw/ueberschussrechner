@@ -19,11 +19,8 @@ public class Drucken {
 
     /**
      * *************************************************************************
-     *
      * Fügt einen String hinzu und geht danach in die nächste Zeile
-     *
      * @param Text String
-     *
      * *************************************************************************
      */
     public void addString(String Text) {
@@ -37,9 +34,7 @@ public class Drucken {
 
     /**
      * ************************************************************************
-     *
      * fügt eine leerzeile hinzu
-     *
      * ************************************************************************
      */
     public void addLeerzeile() {
@@ -50,10 +45,8 @@ public class Drucken {
 
     /**
      * ************************************************************************
-     *
      * Fügt einen Tab hinzu und somit kann man in der gleichen Zeile
      * weiterschreiben
-     *
      ************************************************************************
      */
     public void addTab() {
@@ -68,17 +61,10 @@ public class Drucken {
 
     /**
      * **************************************************************************
-     *
      * Druckt schließlich die Seite und ob ein Rand dabei ist oder nicht
-     *
-     * @param Jdrucker JFrame
-     *
      * @param title Titel
-     *
      * @param bRand Rand
-     *
      * @param bLandscape ob es querformat(true) oder hochformat ist (false)
-     *
      **************************************************************************
      */
     void druckeSeite(String title, boolean bRand, boolean bLandscape) {
@@ -160,20 +146,13 @@ public class Drucken {
     }
 
     /**
-     * **************************************************************************
-     *
+     ****************************************************************************
      * Funktion zerlegt die Strings für die Anpassung am Bildschirm
-     *
      * @param strText String der Text
-     *
      * @param fontMet FontMetrics welche Schriftart
-     *
      * @param wrapword boolean ob Wörter abgeteilt werden sollen oder nicht
-     *
      * @param iWidth int die Breite des Blatts
-     *
      * @return String[]
-     *
      **************************************************************************
      */
     private String[] seperateString(String strText, FontMetrics fontMet, boolean wrapword, int iWidth) {
@@ -206,9 +185,7 @@ public class Drucken {
 
     /**
      * **************************************************************************
-     *
      * Funktion setzt eine neue Schriftart
-     *
      * @param font Font *
      * *************************************************************************
      */

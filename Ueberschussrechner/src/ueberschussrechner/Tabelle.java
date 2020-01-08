@@ -36,7 +36,7 @@ public class Tabelle {
         }
         System.out.println(this.dateipfad);
     }
-    
+
     //https://www.gutefrage.net/frage/kann-man-eine-array--list-in-einer-csv--datei-txt-speichern
     public void csvSpeichern() {
         PrintWriter printWriter = null;
@@ -99,5 +99,9 @@ public class Tabelle {
         drucker.druckeSeite("nix", false);
         //standardmäßig ist Hochformat
         //printer.druckeSeite(this,"nix",false,true); //würde es im Querformat drucken
+    }
+
+    public ArrayList<Buchung> getBuchungListe() {
+        return buchungListe;
     }
 }

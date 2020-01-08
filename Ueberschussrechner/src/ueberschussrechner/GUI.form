@@ -98,8 +98,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTableTabelle">
           <Properties>
+            <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="4">
+              <Table columnCount="5" rowCount="0">
                 <Column editable="true" title="Buchungsdatum" type="java.lang.Object"/>
                 <Column editable="true" title="Buchungsnummer" type="java.lang.Object"/>
                 <Column editable="true" title="Bemerkung" type="java.lang.Object"/>
@@ -155,6 +156,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Datei laden"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLadenSpeichernActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

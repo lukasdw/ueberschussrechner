@@ -1,19 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ueberschussrechner;
 
-/**
- *
- * @author lukas
- */
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class GUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUI
-     */
+    private Tabelle tabelle;
+
     public GUI() {
         initComponents();
     }
@@ -54,12 +47,10 @@ public class GUI extends javax.swing.JFrame {
         JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         JLabelUeberschrift.setText("Überschussrechner");
 
+        jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Buchungsdatum", "Buchungsnummer", "Bemerkung", "Einnahmen", "Ausgaben"
@@ -75,6 +66,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButtonLadenSpeichern.setText("Datei laden");
+        jButtonLadenSpeichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLadenSpeichernActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,7 +109,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDruckenActionPerformed
-        // TODO add your handling code here:
+        tabelle.drucken();
     }//GEN-LAST:event_jButtonDruckenActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -123,6 +119,10 @@ public class GUI extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButtonLadenSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenSpeichernActionPerformed
+        tabelle.csvEinlesen();
+    }//GEN-LAST:event_jButtonLadenSpeichernActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +157,26 @@ public class GUI extends javax.swing.JFrame {
                 new GUI().setVisible(true);
             }
         });
+    }
+
+    public void setTabelle(Tabelle tabelle) {
+        this.tabelle = tabelle;
+    }
+
+    // https://www.youtube.com/watch?v=GAl1FSKvoFY
+    public void addRowToJTable() {
+        DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
+        ArrayList<Buchung> buchungListe = tabelle.getBuchungListe();
+        Object rowData[] = new Object[5];
+        for (int i = 0; i < buchungListe.size(); i++) {
+            rowData[0] = buchungListe.get(i).getBuchungsnummer();
+            rowData[1] = buchungListe.get(i).getBuchungsdatum();
+            rowData[2] = buchungListe.get(i).getBemerkung();
+            rowData[3] = buchungListe.get(i).getEinnahmen();
+            rowData[4] = buchungListe.get(i).getAusgaben();
+            model.addRow(rowData);
+
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
