@@ -1,6 +1,8 @@
 package ueberschussrechner;
 
+import java.io.*;
 import java.util.ArrayList;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class GUI extends javax.swing.JFrame {
@@ -125,7 +127,35 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLadenActionPerformed
 
     private void jButtonSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeichernActionPerformed
-        tabelle.csvSpeichern();
+        //tabelle.csvSpeichern();
+        String dateipfadSave = null;
+        // JFileChooser-Objekt erstellen
+        JFileChooser chooser = new JFileChooser();
+        // Dialog zum Oeffnen von Dateien anzeigen
+        int csvFileInt = chooser.showSaveDialog(null);
+        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+        if (csvFileInt == JFileChooser.APPROVE_OPTION) {
+            // Ausgabe der ausgewaehlten Datei
+            dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
+        }
+        
+        try {
+            File file = new File(dateipfadSave);
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            //loop for jtable rows
+            for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
+                for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
+                    bw.write(jTableTabelle.getModel().getValueAt(i, j) + ";");
+                }
+                bw.write("\n");
+            }
+            bw.close();
+            fw.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButtonSpeichernActionPerformed
 
     private void jButtonHilfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHilfeActionPerformed

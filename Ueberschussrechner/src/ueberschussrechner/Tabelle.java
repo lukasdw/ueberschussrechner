@@ -49,8 +49,8 @@ public class Tabelle {
             // Ausgabe der ausgewaehlten Datei
             dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
         }
-        
-        try {    
+
+        try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(dateipfadSave));
             for (int i = 0; i < buchungListe.size(); i++) {
                 writer.write(buchungListe.get(i).getBuchungsnummer()
@@ -65,23 +65,6 @@ public class Tabelle {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        /*
-        PrintWriter printWriter = null;
-        try {
-            printWriter = new PrintWriter(new FileWriter(dateipfad));
-            Iterator iter = buchungListe.iterator();
-            while (iter.hasNext()) {
-                Object o = iter.next();
-                printWriter.println(o);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (printWriter != null) {
-                printWriter.close();
-            }
-        }*/
     }
 
     public void sortieren() {
