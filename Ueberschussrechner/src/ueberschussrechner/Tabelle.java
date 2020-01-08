@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-public class Tabelle implements Comparable<Tabelle> {
+public class Tabelle {
 
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
     private Drucken drucker = new Drucken();
