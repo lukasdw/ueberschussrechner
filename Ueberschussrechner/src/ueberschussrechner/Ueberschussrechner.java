@@ -10,6 +10,8 @@ public class Ueberschussrechner {
         tabelle.csvEinlesen();
         tabelle.ueberschussBerechnen();
         tabelle.ausgabe();
+        tabelle.sortieren();
         tabelle.drucken();
+        tabelle.csvSpeichern();
     }
 }

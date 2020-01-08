@@ -1,8 +1,7 @@
 package ueberschussrechner;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import javax.swing.*;
 
 public class Tabelle {
@@ -32,18 +31,33 @@ public class Tabelle {
                 String[] buffer = line.split(";");
                 this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.BuchungsnummerCounter++;
-                System.out.println(BuchungsnummerCounter);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println(this.dateipfad);
     }
-
+    
+    //https://www.gutefrage.net/frage/kann-man-eine-array--list-in-einer-csv--datei-txt-speichern
     public void csvSpeichern() {
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(new FileWriter(dateipfad));
+            Iterator iter = buchungListe.iterator();
+            while (iter.hasNext()) {
+                Object o = iter.next();
+                printWriter.println(o);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (printWriter != null) {
+                printWriter.close();
+            }
+        }
     }
 
-    public void tabelleSortieren() {
+    public void sortieren() {
         // Heillige Scheiße ist das kompliziert. Man muss die ArrayListe nach den Objekten sortieren.
         // https://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
     }
@@ -67,7 +81,7 @@ public class Tabelle {
                     + "   " + this.buchungListe.get(i).getAusgaben());
         }
         System.out.println("");
-        System.out.println("Ueberschuss" + this.ueberschuss);
+        System.out.println("Ueberschuss:     " + this.ueberschuss);
     }
 
     public void drucken() {
@@ -82,8 +96,8 @@ public class Tabelle {
                     + "      " + this.buchungListe.get(i).getAusgaben());
         }
         drucker.addLeerzeile();
-        drucker.addString("Ueberschuss" + this.ueberschuss);
-        drucker.druckeSeite("nix", false, true);
+        drucker.addString("Ueberschuss:     " + this.ueberschuss);
+        drucker.druckeSeite("nix", false);
         //standardmäßig ist Hochformat
         //printer.druckeSeite(this,"nix",false,true); //würde es im Querformat drucken
     }
