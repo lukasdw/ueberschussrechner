@@ -30,12 +30,16 @@ public class GUI extends javax.swing.JFrame {
         jButtonSpeichern = new javax.swing.JButton();
         jButtonHilfe = new javax.swing.JButton();
         jButtonSortieren = new javax.swing.JButton();
+        textFieldUeberschuss = new java.awt.TextField();
+        jLabelUeberschuss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         JLabelUeberschrift.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelUeberschrift.setText("Überschussrechner");
+        getContentPane().add(JLabelUeberschrift, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 910, -1));
 
         jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
@@ -55,7 +59,14 @@ public class GUI extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTableTabelle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTableTabelleKeyTyped(evt);
+            }
+        });
         jScrollPaneTabelle.setViewportView(jTableTabelle);
+
+        getContentPane().add(jScrollPaneTabelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 862, 309));
 
         jButtonDrucken.setText("Drucken");
         jButtonDrucken.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +74,7 @@ public class GUI extends javax.swing.JFrame {
                 jButtonDruckenActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonDrucken, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 107, 37));
 
         jButtonLaden.setText("Datei laden");
         jButtonLaden.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +82,7 @@ public class GUI extends javax.swing.JFrame {
                 jButtonLadenActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonLaden, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 450, 109, 37));
 
         jButtonSpeichern.setText("Datei speichern");
         jButtonSpeichern.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +90,7 @@ public class GUI extends javax.swing.JFrame {
                 jButtonSpeichernActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSpeichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, -1, 37));
 
         jButtonHilfe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonHilfe.setText("?");
@@ -85,6 +99,7 @@ public class GUI extends javax.swing.JFrame {
                 jButtonHilfeActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonHilfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 47, -1));
 
         jButtonSortieren.setText("Sortieren");
         jButtonSortieren.addActionListener(new java.awt.event.ActionListener() {
@@ -92,44 +107,14 @@ public class GUI extends javax.swing.JFrame {
                 jButtonSortierenActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonSortieren, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 109, 37));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonSpeichern)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(JLabelUeberschrift)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonHilfe)
-                    .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 29, Short.MAX_VALUE))
-        );
+        textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(textFieldUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 150, -1));
+
+        jLabelUeberschuss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelUeberschuss.setText("Überschuss");
+        getContentPane().add(jLabelUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,7 +127,7 @@ public class GUI extends javax.swing.JFrame {
         tabelle.csvEinlesen();
         setTabelle(tabelle);
         addRowToJTable();
-        tabelle.ueberschussBerechnen();
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jButtonLadenActionPerformed
 
     private void jButtonSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeichernActionPerformed
@@ -159,6 +144,11 @@ public class GUI extends javax.swing.JFrame {
         addRowToJTable();
     }//GEN-LAST:event_jButtonSortierenActionPerformed
 
+    private void jTableTabelleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTabelleKeyTyped
+        /*tabelle.aktualisieren(jTableTabelle);
+        tabelle.ueberschussBerechnen();
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));*/
+    }//GEN-LAST:event_jTableTabelleKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -218,7 +208,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonLaden;
     private javax.swing.JButton jButtonSortieren;
     private javax.swing.JButton jButtonSpeichern;
+    private javax.swing.JLabel jLabelUeberschuss;
     private javax.swing.JScrollPane jScrollPaneTabelle;
     private javax.swing.JTable jTableTabelle;
+    private java.awt.TextField textFieldUeberschuss;
     // End of variables declaration//GEN-END:variables
 }

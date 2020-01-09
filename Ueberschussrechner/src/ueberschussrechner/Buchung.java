@@ -9,7 +9,7 @@ public class Buchung {
     private String buchungsdatum;
     private String bemerkung;
     private int buchungsnummer;
-    private Calendar cal = Calendar.getInstance();
+    //private Calendar cal = Calendar.getInstance();
 
     //public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
@@ -21,14 +21,13 @@ public class Buchung {
         //cal.set(Jahr, Monat, tag);
     }
 
-    public Calendar getCal() {
+    /*public Calendar getCal() {
         return cal;
     }
 
     public void setCal(Calendar cal) {
         this.cal = cal;
-    }
-
+    }*/
     
     public double getAusgaben() {
         return ausgaben;

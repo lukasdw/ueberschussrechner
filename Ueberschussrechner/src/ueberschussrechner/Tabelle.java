@@ -12,7 +12,7 @@ public class Tabelle {
     private double ueberschuss;
     private int BuchungsnummerCounter = 1;
 
-    public void fileChooser(String Option) {
+    public void dateiAuswaehlen(String Option) {
         int csvFileInt = 0;
         // JFileChooser-Objekt erstellen
         JFileChooser chooser = new JFileChooser();
@@ -21,7 +21,7 @@ public class Tabelle {
             csvFileInt = chooser.showOpenDialog(null);
         }
         if (Option.equals("Speichern")) {
-            // Dialog zum Oeffnen von Dateien anzeigen
+            // Dialog zum Speichern von Dateien anzeigen
             csvFileInt = chooser.showSaveDialog(null);
         }
         /* Abfrage, ob auf "Öffnen" geklickt wurde */
@@ -33,7 +33,7 @@ public class Tabelle {
 
     public void csvEinlesen() {
         String line = "";
-        fileChooser("Öffnen");
+        dateiAuswaehlen("Öffnen");
         try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
@@ -46,6 +46,7 @@ public class Tabelle {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        ueberschussBerechnen();
     }
 
     //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
@@ -62,8 +63,8 @@ public class Tabelle {
             // Ausgabe der ausgewaehlten Datei
             dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
         }*/
-        
-        fileChooser("Speichern");
+
+        dateiAuswaehlen("Speichern");
         try {
             File file = new File(this.dateipfad);
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
@@ -85,11 +86,11 @@ public class Tabelle {
 
     //https://www.youtube.com/watch?v=wzWFQTLn8hI
     public void sortieren() {
-        Collections.sort(buchungListe, new Comparator<Buchung>() {
+        /*Collections.sort(buchungListe, new Comparator<Buchung>() {
             public int compare(Buchung b1, Buchung b2) {
                 return b1.getCal().getTime().compareTo(b2.getCal().getTime());
             }
-        });
+        });*/
     }
 
     public void ueberschussBerechnen() {
@@ -120,10 +121,10 @@ public class Tabelle {
         drucker.addString("Buchungsdatum    Buchungsnummer  Bemerkung   Einnahmen   Ausgaben");
         for (int i = 0; i < this.buchungListe.size(); i++) {
             drucker.addString(this.buchungListe.get(i).getBuchungsnummer()
-                    + "            " + this.buchungListe.get(i).getBuchungsdatum()
-                    + "      " + this.buchungListe.get(i).getBemerkung()
-                    + "      " + this.buchungListe.get(i).getEinnahmen()
-                    + "      " + this.buchungListe.get(i).getAusgaben());
+                    + "                              " + this.buchungListe.get(i).getBuchungsdatum()
+                    + "         " + this.buchungListe.get(i).getBemerkung()
+                    + "          " + this.buchungListe.get(i).getEinnahmen()
+                    + "          " + this.buchungListe.get(i).getAusgaben());
         }
         drucker.addLeerzeile();
         drucker.addString("Ueberschuss:     " + this.ueberschuss);
@@ -132,7 +133,28 @@ public class Tabelle {
         //printer.druckeSeite(this,"nix",false,true); //würde es im Querformat drucken
     }
 
+    public void aktualisieren(JTable jTableTabelle) {
+        for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
+            for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
+                this.buchungListe.get(i).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(j, j));
+                this.buchungListe.get(i).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(j, j));
+                this.buchungListe.get(i).setBemerkung((String) jTableTabelle.getModel().getValueAt(j, j));
+                this.buchungListe.get(i).setEinnahmen((double) jTableTabelle.getModel().getValueAt(j, j));
+                this.buchungListe.get(i).setAusgaben((double) jTableTabelle.getModel().getValueAt(j, j));
+            }
+        }
+    }
+
     public ArrayList<Buchung> getBuchungListe() {
         return buchungListe;
     }
+
+    public double getUeberschuss() {
+        return ueberschuss;
+    }
+
+    public void setUeberschuss(double ueberschuss) {
+        this.ueberschuss = ueberschuss;
+    }
+
 }
