@@ -1,9 +1,9 @@
 package ueberschussrechner;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 
 public class GUI extends javax.swing.JFrame {
 

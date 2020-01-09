@@ -1,13 +1,7 @@
 package ueberschussrechner;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.JobAttributes;
-import java.awt.PageAttributes;
-import java.awt.PrintJob;
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 import javax.swing.JFrame;
 
 public class Drucken {

@@ -11,13 +11,14 @@ public class Buchung {
     private int buchungsnummer;
     private Calendar cal = Calendar.getInstance();
 
-    public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
+    //public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
+    public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsdatum = buchungsdatum;
         this.buchungsnummer = buchungsnummer;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
         this.ausgaben = ausgaben;
-        cal.set(Jahr, Monat, tag);
+        //cal.set(Jahr, Monat, tag);
     }
 
     public Calendar getCal() {

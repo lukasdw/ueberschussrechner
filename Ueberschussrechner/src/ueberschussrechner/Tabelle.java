@@ -12,24 +12,35 @@ public class Tabelle {
     private double ueberschuss;
     private int BuchungsnummerCounter = 1;
 
-    public void csvEinlesen() {
-        String line = "";
+    public void fileChooser(String Option) {
+        int csvFileInt = 0;
         // JFileChooser-Objekt erstellen
         JFileChooser chooser = new JFileChooser();
-        // Dialog zum Oeffnen von Dateien anzeigen
-        int csvFileInt = chooser.showOpenDialog(null);
+        if (Option.equals("Öffnen")) {
+            // Dialog zum Oeffnen von Dateien anzeigen
+            csvFileInt = chooser.showOpenDialog(null);
+        }
+        if (Option.equals("Speichern")) {
+            // Dialog zum Oeffnen von Dateien anzeigen
+            csvFileInt = chooser.showSaveDialog(null);
+        }
         /* Abfrage, ob auf "Öffnen" geklickt wurde */
         if (csvFileInt == JFileChooser.APPROVE_OPTION) {
             // Ausgabe der ausgewaehlten Datei
             this.dateipfad = chooser.getSelectedFile().getAbsolutePath();
         }
+    }
 
+    public void csvEinlesen() {
+        String line = "";
+        fileChooser("Öffnen");
         try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
-                String[] datum = buffer[1].split(".");
-                this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                // String[] datum = buffer[1].split(".");
+                // this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.BuchungsnummerCounter++;
             }
         } catch (IOException e) {
@@ -39,20 +50,22 @@ public class Tabelle {
 
     //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
     public void csvSpeichern(JTable jTableTabelle) {
+        /*
         //tabelle.csvSpeichern();
         String dateipfadSave = null;
         // JFileChooser-Objekt erstellen
         JFileChooser chooser = new JFileChooser();
         // Dialog zum Oeffnen von Dateien anzeigen
         int csvFileInt = chooser.showSaveDialog(null);
-        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+        //Abfrage, ob auf "Öffnen" geklickt wurde
         if (csvFileInt == JFileChooser.APPROVE_OPTION) {
             // Ausgabe der ausgewaehlten Datei
             dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
-        }
+        }*/
         
+        fileChooser("Speichern");
         try {
-            File file = new File(dateipfadSave);
+            File file = new File(this.dateipfad);
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
 
