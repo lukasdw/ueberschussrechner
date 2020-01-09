@@ -27,14 +27,16 @@
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jScrollPaneTabelle" pref="863" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="jButtonHilfe" min="-2" pref="47" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButtonDrucken" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonLaden" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonSortieren" min="-2" pref="109" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonSpeichern" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonLaden" min="-2" pref="109" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
@@ -48,15 +50,16 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="JLabelUeberschrift" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="jScrollPaneTabelle" pref="355" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPaneTabelle" pref="298" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButtonSpeichern" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jButtonLaden" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonDrucken" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonHilfe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonLaden" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jButtonSpeichern" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jButtonSortieren" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jButtonDrucken" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -166,6 +169,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHilfeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonSortieren">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sortieren"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSortierenActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

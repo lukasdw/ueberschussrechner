@@ -24,21 +24,22 @@ public class Tabelle {
             this.dateipfad = chooser.getSelectedFile().getAbsolutePath();
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
-                this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                String[] datum = buffer[1].split(".");
+                this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.BuchungsnummerCounter++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(this.dateipfad);
     }
 
     //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
-    public void csvSpeichern() {
+    public void csvSpeichern(JTable jTableTabelle) {
+        //tabelle.csvSpeichern();
         String dateipfadSave = null;
         // JFileChooser-Objekt erstellen
         JFileChooser chooser = new JFileChooser();
@@ -49,25 +50,33 @@ public class Tabelle {
             // Ausgabe der ausgewaehlten Datei
             dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
         }
-
+        
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dateipfadSave));
-            for (int i = 0; i < buchungListe.size(); i++) {
-                writer.write(buchungListe.get(i).getBuchungsnummer()
-                        + ";" + buchungListe.get(i).getBuchungsdatum()
-                        + ";" + buchungListe.get(i).getBemerkung()
-                        + ";" + buchungListe.get(i).getEinnahmen()
-                        + ";" + buchungListe.get(i).getAusgaben());
-                writer.newLine();
-            }
-            writer.close();
+            File file = new File(dateipfadSave);
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            //loop for jtable rows
+            for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
+                for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
+                    bw.write(jTableTabelle.getModel().getValueAt(i, j) + ";");
+                }
+                bw.write("\n");
+            }
+            bw.close();
+            fw.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
+    //https://www.youtube.com/watch?v=wzWFQTLn8hI
     public void sortieren() {
+        Collections.sort(buchungListe, new Comparator<Buchung>() {
+            public int compare(Buchung b1, Buchung b2) {
+                return b1.getCal().getTime().compareTo(b2.getCal().getTime());
+            }
+        });
     }
 
     public void ueberschussBerechnen() {

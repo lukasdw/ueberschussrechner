@@ -29,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
         jButtonLaden = new javax.swing.JButton();
         jButtonSpeichern = new javax.swing.JButton();
         jButtonHilfe = new javax.swing.JButton();
+        jButtonSortieren = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +86,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonSortieren.setText("Sortieren");
+        jButtonSortieren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSortierenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,10 +105,12 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jButtonHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonSpeichern)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSpeichern)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50))
             .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -110,14 +120,15 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(JLabelUeberschrift)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLaden)
-                    .addComponent(jButtonDrucken)
-                    .addComponent(jButtonHilfe))
-                .addGap(21, 21, 21))
+                    .addComponent(jButtonHilfe)
+                    .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,35 +146,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLadenActionPerformed
 
     private void jButtonSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeichernActionPerformed
-        //tabelle.csvSpeichern();
-        String dateipfadSave = null;
-        // JFileChooser-Objekt erstellen
-        JFileChooser chooser = new JFileChooser();
-        // Dialog zum Oeffnen von Dateien anzeigen
-        int csvFileInt = chooser.showSaveDialog(null);
-        /* Abfrage, ob auf "Öffnen" geklickt wurde */
-        if (csvFileInt == JFileChooser.APPROVE_OPTION) {
-            // Ausgabe der ausgewaehlten Datei
-            dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
-        }
-        
-        try {
-            File file = new File(dateipfadSave);
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            //loop for jtable rows
-            for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
-                for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
-                    bw.write(jTableTabelle.getModel().getValueAt(i, j) + ";");
-                }
-                bw.write("\n");
-            }
-            bw.close();
-            fw.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        tabelle.csvSpeichern(jTableTabelle);
     }//GEN-LAST:event_jButtonSpeichernActionPerformed
 
     private void jButtonHilfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHilfeActionPerformed
@@ -171,9 +154,12 @@ public class GUI extends javax.swing.JFrame {
         guiHilfe.setVisible(true);
     }//GEN-LAST:event_jButtonHilfeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonSortierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortierenActionPerformed
+        tabelle.sortieren();
+        addRowToJTable();
+    }//GEN-LAST:event_jButtonSortierenActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -222,7 +208,6 @@ public class GUI extends javax.swing.JFrame {
             rowData[3] = buchungListe.get(i).getEinnahmen();
             rowData[4] = buchungListe.get(i).getAusgaben();
             model.addRow(rowData);
-
         }
     }
 
@@ -231,6 +216,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDrucken;
     private javax.swing.JButton jButtonHilfe;
     private javax.swing.JButton jButtonLaden;
+    private javax.swing.JButton jButtonSortieren;
     private javax.swing.JButton jButtonSpeichern;
     private javax.swing.JScrollPane jScrollPaneTabelle;
     private javax.swing.JTable jTableTabelle;
