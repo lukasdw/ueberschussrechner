@@ -8,7 +8,7 @@ public class Buchung {
     private double einnahmen;
     private String buchungsdatum;
     private String bemerkung;
-    private int buchungsnummer;
+    private int buchungsnummer = 0;
     //private Calendar cal = Calendar.getInstance();
 
     //public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
