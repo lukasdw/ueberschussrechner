@@ -3,6 +3,7 @@ package ueberschussrechner;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Tabelle {
 
@@ -32,8 +33,8 @@ public class Tabelle {
     }
 
     public void csvEinlesen() {
-        String line = "";
         dateiAuswaehlen("Öffnen");
+        String line = "";
         try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
@@ -51,19 +52,6 @@ public class Tabelle {
 
     //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
     public void csvSpeichern(JTable jTableTabelle) {
-        /*
-        //tabelle.csvSpeichern();
-        String dateipfadSave = null;
-        // JFileChooser-Objekt erstellen
-        JFileChooser chooser = new JFileChooser();
-        // Dialog zum Oeffnen von Dateien anzeigen
-        int csvFileInt = chooser.showSaveDialog(null);
-        //Abfrage, ob auf "Öffnen" geklickt wurde
-        if (csvFileInt == JFileChooser.APPROVE_OPTION) {
-            // Ausgabe der ausgewaehlten Datei
-            dateipfadSave = chooser.getSelectedFile().getAbsolutePath();
-        }*/
-
         dateiAuswaehlen("Speichern");
         try {
             File file = new File(this.dateipfad);
@@ -102,7 +90,7 @@ public class Tabelle {
         this.ueberschuss = summe;
     }
 
-    public void ausgabe() {
+    /*public void ausgabe() {
         System.out.println("Buchungsnummer  Buchungsdatum   Bemerkung       Einnahmen   Ausgaben");
         for (int i = 0; i < this.buchungListe.size(); i++) {
             System.out.println(this.buchungListe.get(i).getBuchungsnummer()
@@ -113,8 +101,8 @@ public class Tabelle {
         }
         System.out.println("");
         System.out.println("Ueberschuss:     " + this.ueberschuss);
-    }
-
+    }*/
+    
     public void drucken() {
         drucker.addString("Überschussrechner");
         drucker.addLeerzeile();
@@ -133,7 +121,23 @@ public class Tabelle {
         //printer.druckeSeite(this,"nix",false,true); //würde es im Querformat drucken
     }
 
-    public void aktualisieren(JTable jTableTabelle) {
+    // https://www.youtube.com/watch?v=GAl1FSKvoFY
+    // Kopiert die Buchungsliste in die Tabelle
+    public void addBuchungslisteToJTable(JTable jTableTabelle) {
+        DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
+        Object rowData[] = new Object[5];
+        for (int i = 0; i < buchungListe.size(); i++) {
+            rowData[0] = buchungListe.get(i).getBuchungsnummer();
+            rowData[1] = buchungListe.get(i).getBuchungsdatum();
+            rowData[2] = buchungListe.get(i).getBemerkung();
+            rowData[3] = buchungListe.get(i).getEinnahmen();
+            rowData[4] = buchungListe.get(i).getAusgaben();
+            model.addRow(rowData);
+        }
+    }
+
+    // Kopiert die Tabelle in die Buchungsliste
+    public void addJTableToBuchungsliste(JTable jTableTabelle) {
         for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
             for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
                 this.buchungListe.get(i).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(j, j));
@@ -156,5 +160,4 @@ public class Tabelle {
     public void setUeberschuss(double ueberschuss) {
         this.ueberschuss = ueberschuss;
     }
-
 }
