@@ -11,12 +11,10 @@ public class Drucken {
     private Font myFont = new Font("SansSerif", Font.PLAIN, 12);
     private JFrame Jdrucker = new JFrame();
 
-    /**
-     * *************************************************************************
+    /***************************************************************************
      * Fügt einen String hinzu und geht danach in die nächste Zeile
      * @param Text String
-     * *************************************************************************
-     */
+     **************************************************************************/
     public void addString(String Text) {
         if (ar == null) {
             ar = new ArrayList();
@@ -26,23 +24,19 @@ public class Drucken {
         }
     }
 
-    /**
-     * ************************************************************************
+    /***************************************************************************
      * fügt eine leerzeile hinzu
-     * ************************************************************************
-     */
+     * ************************************************************************/
     public void addLeerzeile() {
         if (ar != null) {
             ar.add("\n");
         }
     }
 
-    /**
-     * ************************************************************************
+    /***************************************************************************
      * Fügt einen Tab hinzu und somit kann man in der gleichen Zeile
      * weiterschreiben
-     ************************************************************************
-     */
+     **************************************************************************/
     public void addTab() {
         if (ar != null) {
             ar.add("\t");
@@ -53,14 +47,12 @@ public class Drucken {
         druckeSeite(title, bRand, false);
     }
 
-    /**
-     * **************************************************************************
+    /***************************************************************************
      * Druckt schließlich die Seite und ob ein Rand dabei ist oder nicht
      * @param title Titel
      * @param bRand Rand
      * @param bLandscape ob es querformat(true) oder hochformat ist (false)
-     **************************************************************************
-     */
+     **************************************************************************/
     void druckeSeite(String title, boolean bRand, boolean bLandscape) {
 
         PageAttributes page = new PageAttributes();
@@ -139,16 +131,14 @@ public class Drucken {
         }
     }
 
-    /**
-     ****************************************************************************
+    /***************************************************************************
      * Funktion zerlegt die Strings für die Anpassung am Bildschirm
      * @param strText String der Text
      * @param fontMet FontMetrics welche Schriftart
      * @param wrapword boolean ob Wörter abgeteilt werden sollen oder nicht
      * @param iWidth int die Breite des Blatts
      * @return String[]
-     **************************************************************************
-     */
+     **************************************************************************/
     private String[] seperateString(String strText, FontMetrics fontMet, boolean wrapword, int iWidth) {
 
         ArrayList myTmp = new ArrayList();

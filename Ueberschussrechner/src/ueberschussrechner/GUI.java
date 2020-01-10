@@ -34,12 +34,10 @@ public class GUI extends javax.swing.JFrame {
         jLabelUeberschuss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
         JLabelUeberschrift.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelUeberschrift.setText("Überschussrechner");
-        getContentPane().add(JLabelUeberschrift, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 910, -1));
 
         jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
@@ -48,25 +46,36 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Buchungsdatum", "Buchungsnummer", "Bemerkung", "Einnahmen", "Ausgaben"
+                "Buchungsnummer", "Buchungsdatum", "Bemerkung", "Einnahmen", "Ausgaben"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jTableTabelle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTableTabelleKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTableTabelleKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTableTabelleKeyTyped(evt);
             }
         });
         jScrollPaneTabelle.setViewportView(jTableTabelle);
-
-        getContentPane().add(jScrollPaneTabelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 862, 309));
 
         jButtonDrucken.setText("Drucken");
         jButtonDrucken.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +83,6 @@ public class GUI extends javax.swing.JFrame {
                 jButtonDruckenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonDrucken, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 107, 37));
 
         jButtonLaden.setText("Datei laden");
         jButtonLaden.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +90,6 @@ public class GUI extends javax.swing.JFrame {
                 jButtonLadenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonLaden, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 450, 109, 37));
 
         jButtonSpeichern.setText("Datei speichern");
         jButtonSpeichern.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +97,6 @@ public class GUI extends javax.swing.JFrame {
                 jButtonSpeichernActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSpeichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, -1, 37));
 
         jButtonHilfe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonHilfe.setText("?");
@@ -99,7 +105,6 @@ public class GUI extends javax.swing.JFrame {
                 jButtonHilfeActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonHilfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 47, -1));
 
         jButtonSortieren.setText("Sortieren");
         jButtonSortieren.addActionListener(new java.awt.event.ActionListener() {
@@ -107,14 +112,62 @@ public class GUI extends javax.swing.JFrame {
                 jButtonSortierenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSortieren, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 109, 37));
 
         textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(textFieldUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 150, -1));
 
         jLabelUeberschuss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelUeberschuss.setText("Überschuss");
-        getContentPane().add(jLabelUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, -1, 20));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(563, 563, 563)
+                                        .addComponent(jLabelUeberschuss)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(343, 343, 343)
+                                        .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(13, 13, 13)
+                                        .addComponent(jButtonSpeichern)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(JLabelUeberschrift)
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelUeberschuss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonHilfe)
+                    .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,7 +179,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButtonLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenActionPerformed
         tabelle.csvEinlesen();
         setTabelle(tabelle);
-        addRowToJTable();
+        tabelle.addBuchungslisteToJTable(jTableTabelle);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jButtonLadenActionPerformed
 
@@ -141,14 +194,26 @@ public class GUI extends javax.swing.JFrame {
 
     private void jButtonSortierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortierenActionPerformed
         tabelle.sortieren();
-        addRowToJTable();
+        tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jButtonSortierenActionPerformed
 
     private void jTableTabelleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTabelleKeyTyped
-        /*tabelle.aktualisieren(jTableTabelle);
+        tabelle.addJTableToBuchungsliste(jTableTabelle);
         tabelle.ueberschussBerechnen();
-        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));*/
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jTableTabelleKeyTyped
+
+    private void jTableTabelleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTabelleKeyPressed
+        tabelle.addJTableToBuchungsliste(jTableTabelle);
+        tabelle.ueberschussBerechnen();
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
+    }//GEN-LAST:event_jTableTabelleKeyPressed
+
+    private void jTableTabelleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTabelleKeyReleased
+        tabelle.addJTableToBuchungsliste(jTableTabelle);
+        tabelle.ueberschussBerechnen();
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
+    }//GEN-LAST:event_jTableTabelleKeyReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -184,21 +249,6 @@ public class GUI extends javax.swing.JFrame {
 
     public void setTabelle(Tabelle tabelle) {
         this.tabelle = tabelle;
-    }
-
-    // https://www.youtube.com/watch?v=GAl1FSKvoFY
-    public void addRowToJTable() {
-        DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
-        ArrayList<Buchung> buchungListe = tabelle.getBuchungListe();
-        Object rowData[] = new Object[5];
-        for (int i = 0; i < buchungListe.size(); i++) {
-            rowData[0] = buchungListe.get(i).getBuchungsnummer();
-            rowData[1] = buchungListe.get(i).getBuchungsdatum();
-            rowData[2] = buchungListe.get(i).getBemerkung();
-            rowData[3] = buchungListe.get(i).getEinnahmen();
-            rowData[4] = buchungListe.get(i).getAusgaben();
-            model.addRow(rowData);
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

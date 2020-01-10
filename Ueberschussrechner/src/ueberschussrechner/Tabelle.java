@@ -90,19 +90,6 @@ public class Tabelle {
         this.ueberschuss = summe;
     }
 
-    /*public void ausgabe() {
-        System.out.println("Buchungsnummer  Buchungsdatum   Bemerkung       Einnahmen   Ausgaben");
-        for (int i = 0; i < this.buchungListe.size(); i++) {
-            System.out.println(this.buchungListe.get(i).getBuchungsnummer()
-                    + "      " + this.buchungListe.get(i).getBuchungsdatum()
-                    + "      " + this.buchungListe.get(i).getBemerkung()
-                    + "      " + this.buchungListe.get(i).getEinnahmen()
-                    + "   " + this.buchungListe.get(i).getAusgaben());
-        }
-        System.out.println("");
-        System.out.println("Ueberschuss:     " + this.ueberschuss);
-    }*/
-    
     public void drucken() {
         drucker.addString("Überschussrechner");
         drucker.addLeerzeile();
@@ -136,15 +123,16 @@ public class Tabelle {
         }
     }
 
+    // https://www.youtube.com/watch?v=GAl1FSKvoFY
     // Kopiert die Tabelle in die Buchungsliste
     public void addJTableToBuchungsliste(JTable jTableTabelle) {
-        for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
-            for (int j = 0; j < jTableTabelle.getColumnCount(); j++) {
-                this.buchungListe.get(i).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(j, j));
-                this.buchungListe.get(i).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(j, j));
-                this.buchungListe.get(i).setBemerkung((String) jTableTabelle.getModel().getValueAt(j, j));
-                this.buchungListe.get(i).setEinnahmen((double) jTableTabelle.getModel().getValueAt(j, j));
-                this.buchungListe.get(i).setAusgaben((double) jTableTabelle.getModel().getValueAt(j, j));
+        for (int row = 0; row < jTableTabelle.getRowCount(); row++) {
+            for (int col = 0; col < jTableTabelle.getColumnCount(); col++) {
+                if(col == 0) this.buchungListe.get(row).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(row, col));
+                if(col == 1) this.buchungListe.get(row).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(row, col));
+                if(col == 2) this.buchungListe.get(row).setBemerkung((String) jTableTabelle.getModel().getValueAt(row, col));
+                if(col == 3) this.buchungListe.get(row).setEinnahmen((double) jTableTabelle.getModel().getValueAt(row, col));
+                if(col == 4) this.buchungListe.get(row).setAusgaben((double) jTableTabelle.getModel().getValueAt(row, col));
             }
         }
     }
