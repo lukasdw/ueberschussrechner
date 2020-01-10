@@ -12,6 +12,7 @@ public class Tabelle {
     private String dateipfad;
     private double ueberschuss;
     private int BuchungsnummerCounter = 1;
+    private boolean tabelleGefuellt = false;
 
     public void dateiAuswaehlen(String Option) {
         int csvFileInt = 0;
@@ -32,8 +33,14 @@ public class Tabelle {
         }
     }
 
-    public void csvEinlesen() {
+    public void csvEinlesen(JTable jTableTabelle) {
         dateiAuswaehlen("Öffnen");
+        if (tabelleGefuellt = true) {
+            for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
+                // Hier müsste eine Funktion hin, die die ganze Tabelle löscht
+                //((DefaultTableModel) jTableTabelle.getModel()).removeRow(i);
+            }
+        }
         String line = "";
         try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
@@ -158,4 +165,13 @@ public class Tabelle {
     public void setUeberschuss(double ueberschuss) {
         this.ueberschuss = ueberschuss;
     }
+
+    public boolean isTabelleGefuellt() {
+        return tabelleGefuellt;
+    }
+
+    public void setTabelleGefuellt(boolean tabelleGefuellt) {
+        this.tabelleGefuellt = tabelleGefuellt;
+    }
+
 }

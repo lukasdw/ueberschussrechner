@@ -177,9 +177,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDruckenActionPerformed
 
     private void jButtonLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenActionPerformed
-        tabelle.csvEinlesen();
+        tabelle.csvEinlesen(jTableTabelle);
         setTabelle(tabelle);
         tabelle.addBuchungslisteToJTable(jTableTabelle);
+        tabelle.setTabelleGefuellt(true);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jButtonLadenActionPerformed
 
@@ -250,6 +251,8 @@ public class GUI extends javax.swing.JFrame {
     public void setTabelle(Tabelle tabelle) {
         this.tabelle = tabelle;
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
