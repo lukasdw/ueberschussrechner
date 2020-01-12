@@ -135,21 +135,11 @@ public class Tabelle {
     public void addJTableToBuchungsliste(JTable jTableTabelle) {
         for (int row = 0; row < jTableTabelle.getRowCount(); row++) {
             for (int col = 0; col < jTableTabelle.getColumnCount(); col++) {
-                if (col == 0) {
-                    this.buchungListe.get(row).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(row, col));
-                }
-                if (col == 1) {
-                    this.buchungListe.get(row).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(row, col));
-                }
-                if (col == 2) {
-                    this.buchungListe.get(row).setBemerkung((String) jTableTabelle.getModel().getValueAt(row, col));
-                }
-                if (col == 3) {
-                    this.buchungListe.get(row).setEinnahmen((double) jTableTabelle.getModel().getValueAt(row, col));
-                }
-                if (col == 4) {
-                    this.buchungListe.get(row).setAusgaben((double) jTableTabelle.getModel().getValueAt(row, col));
-                }
+                if (col == 0) this.buchungListe.get(row).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(row, col));
+                if (col == 1) this.buchungListe.get(row).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(row, col));
+                if (col == 2) this.buchungListe.get(row).setBemerkung((String) jTableTabelle.getModel().getValueAt(row, col));
+                if (col == 3) this.buchungListe.get(row).setEinnahmen((double) jTableTabelle.getModel().getValueAt(row, col));
+                if (col == 4) this.buchungListe.get(row).setAusgaben((double) jTableTabelle.getModel().getValueAt(row, col));
             }
         }
     }
