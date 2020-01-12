@@ -22,25 +22,255 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogHelp = new javax.swing.JDialog();
+        jScrollPaneHelp = new javax.swing.JScrollPane();
+        jTextAreaHelp = new javax.swing.JTextArea();
+        jPanelLinks = new javax.swing.JPanel();
         JLabelUeberschrift = new javax.swing.JLabel();
-        jScrollPaneTabelle = new javax.swing.JScrollPane();
-        jTableTabelle = new javax.swing.JTable();
-        jButtonDrucken = new javax.swing.JButton();
-        jButtonLaden = new javax.swing.JButton();
-        jButtonSpeichern = new javax.swing.JButton();
-        jButtonHilfe = new javax.swing.JButton();
-        jButtonSortieren = new javax.swing.JButton();
+        jLabelUeberschrift2 = new javax.swing.JLabel();
+        jPanelPlatzhalter = new javax.swing.JPanel();
+        jPanelSpeichern = new javax.swing.JPanel();
+        jLabelSpeichern = new javax.swing.JLabel();
+        jPanelLaden = new javax.swing.JPanel();
+        jLabelLaden = new javax.swing.JLabel();
+        jPanelSortieren = new javax.swing.JPanel();
+        jLabelSortieren = new javax.swing.JLabel();
+        jPanelDrucken = new javax.swing.JPanel();
+        jLabelDrucken = new javax.swing.JLabel();
+        jPanelHilfe = new javax.swing.JPanel();
+        jLabelHilfe = new javax.swing.JLabel();
+        jPanelRechts = new javax.swing.JPanel();
         textFieldUeberschuss = new java.awt.TextField();
         jLabelUeberschuss = new javax.swing.JLabel();
+        jScrollPaneTabelle = new javax.swing.JScrollPane();
+        jTableTabelle = new javax.swing.JTable();
+
+        jDialogHelp.setMinimumSize(new java.awt.Dimension(550, 550));
+
+        jTextAreaHelp.setEditable(false);
+        jTextAreaHelp.setColumns(20);
+        jTextAreaHelp.setRows(5);
+        jTextAreaHelp.setText("Scurr Scurr");
+        jScrollPaneHelp.setViewportView(jTextAreaHelp);
+
+        javax.swing.GroupLayout jDialogHelpLayout = new javax.swing.GroupLayout(jDialogHelp.getContentPane());
+        jDialogHelp.getContentPane().setLayout(jDialogHelpLayout);
+        jDialogHelpLayout.setHorizontalGroup(
+            jDialogHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogHelpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jDialogHelpLayout.setVerticalGroup(
+            jDialogHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogHelpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JLabelUeberschrift.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
+        jPanelLinks.setBackground(new java.awt.Color(12, 28, 61));
+
+        JLabelUeberschrift.setBackground(new java.awt.Color(255, 255, 255));
+        JLabelUeberschrift.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
+        JLabelUeberschrift.setForeground(new java.awt.Color(255, 255, 255));
         JLabelUeberschrift.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelUeberschrift.setText("Überschussrechner");
 
+        jLabelUeberschrift2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelUeberschrift2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabelUeberschrift2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelUeberschrift2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelUeberschrift2.setText("Leon Tergast, Lutz Peil und Lukas de Weerdt");
+
+        jPanelPlatzhalter.setPreferredSize(new java.awt.Dimension(0, 2));
+
+        javax.swing.GroupLayout jPanelPlatzhalterLayout = new javax.swing.GroupLayout(jPanelPlatzhalter);
+        jPanelPlatzhalter.setLayout(jPanelPlatzhalterLayout);
+        jPanelPlatzhalterLayout.setHorizontalGroup(
+            jPanelPlatzhalterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelPlatzhalterLayout.setVerticalGroup(
+            jPanelPlatzhalterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanelSpeichern.setBackground(new java.awt.Color(19, 59, 138));
+
+        jLabelSpeichern.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelSpeichern.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSpeichern.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSpeichern.setText("Datei speichern");
+        jLabelSpeichern.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelSpeichernMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelSpeichernLayout = new javax.swing.GroupLayout(jPanelSpeichern);
+        jPanelSpeichern.setLayout(jPanelSpeichernLayout);
+        jPanelSpeichernLayout.setHorizontalGroup(
+            jPanelSpeichernLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelSpeichernLayout.setVerticalGroup(
+            jPanelSpeichernLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        jPanelLaden.setBackground(new java.awt.Color(19, 59, 138));
+
+        jLabelLaden.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelLaden.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLaden.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLaden.setText("Datei laden");
+        jLabelLaden.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLadenMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelLadenLayout = new javax.swing.GroupLayout(jPanelLaden);
+        jPanelLaden.setLayout(jPanelLadenLayout);
+        jPanelLadenLayout.setHorizontalGroup(
+            jPanelLadenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelLadenLayout.setVerticalGroup(
+            jPanelLadenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        jPanelSortieren.setBackground(new java.awt.Color(19, 59, 138));
+
+        jLabelSortieren.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelSortieren.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSortieren.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSortieren.setText("Sortieren");
+        jLabelSortieren.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelSortierenMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelSortierenLayout = new javax.swing.GroupLayout(jPanelSortieren);
+        jPanelSortieren.setLayout(jPanelSortierenLayout);
+        jPanelSortierenLayout.setHorizontalGroup(
+            jPanelSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelSortierenLayout.setVerticalGroup(
+            jPanelSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        jPanelDrucken.setBackground(new java.awt.Color(19, 59, 138));
+
+        jLabelDrucken.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelDrucken.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDrucken.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDrucken.setText("Drucken");
+        jLabelDrucken.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelDruckenMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelDruckenLayout = new javax.swing.GroupLayout(jPanelDrucken);
+        jPanelDrucken.setLayout(jPanelDruckenLayout);
+        jPanelDruckenLayout.setHorizontalGroup(
+            jPanelDruckenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelDruckenLayout.setVerticalGroup(
+            jPanelDruckenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelDrucken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+        );
+
+        jPanelHilfe.setBackground(new java.awt.Color(19, 59, 138));
+        jPanelHilfe.setPreferredSize(new java.awt.Dimension(40, 40));
+
+        jLabelHilfe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelHilfe.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHilfe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHilfe.setText("?");
+        jLabelHilfe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHilfeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelHilfeLayout = new javax.swing.GroupLayout(jPanelHilfe);
+        jPanelHilfe.setLayout(jPanelHilfeLayout);
+        jPanelHilfeLayout.setHorizontalGroup(
+            jPanelHilfeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelHilfe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+        jPanelHilfeLayout.setVerticalGroup(
+            jPanelHilfeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelHilfe, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanelLinksLayout = new javax.swing.GroupLayout(jPanelLinks);
+        jPanelLinks.setLayout(jPanelLinksLayout);
+        jPanelLinksLayout.setHorizontalGroup(
+            jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelLinksLayout.createSequentialGroup()
+                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLinksLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLinksLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jLabelUeberschrift2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanelLinksLayout.setVerticalGroup(
+            jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLinksLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(JLabelUeberschrift)
+                .addGap(2, 2, 2)
+                .addComponent(jLabelUeberschrift2)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(jPanelLaden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanelLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 510));
+
+        jPanelRechts.setBackground(new java.awt.Color(255, 255, 255));
+
+        textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabelUeberschuss.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabelUeberschuss.setText("Überschuss");
+
         jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
+        jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -77,126 +307,41 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPaneTabelle.setViewportView(jTableTabelle);
 
-        jButtonDrucken.setText("Drucken");
-        jButtonDrucken.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDruckenActionPerformed(evt);
-            }
-        });
-
-        jButtonLaden.setText("Datei laden");
-        jButtonLaden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLadenActionPerformed(evt);
-            }
-        });
-
-        jButtonSpeichern.setText("Datei speichern");
-        jButtonSpeichern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSpeichernActionPerformed(evt);
-            }
-        });
-
-        jButtonHilfe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonHilfe.setText("?");
-        jButtonHilfe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonHilfeActionPerformed(evt);
-            }
-        });
-
-        jButtonSortieren.setText("Sortieren");
-        jButtonSortieren.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSortierenActionPerformed(evt);
-            }
-        });
-
-        textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        jLabelUeberschuss.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabelUeberschuss.setText("Überschuss");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(563, 563, 563)
-                                        .addComponent(jLabelUeberschuss)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(343, 343, 343)
-                                        .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(13, 13, 13)
-                                        .addComponent(jButtonSpeichern)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelRechtsLayout = new javax.swing.GroupLayout(jPanelRechts);
+        jPanelRechts.setLayout(jPanelRechtsLayout);
+        jPanelRechtsLayout.setHorizontalGroup(
+            jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
+                .addContainerGap(362, Short.MAX_VALUE)
+                .addComponent(jLabelUeberschuss)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+            .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
+                    .addContainerGap(20, Short.MAX_VALUE)
+                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(20, Short.MAX_VALUE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(JLabelUeberschrift)
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelUeberschuss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonHilfe)
-                    .addComponent(jButtonSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLaden, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+        jPanelRechtsLayout.setVerticalGroup(
+            jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
+                .addContainerGap(470, Short.MAX_VALUE)
+                .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
+            .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelRechtsLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(48, Short.MAX_VALUE)))
         );
+
+        getContentPane().add(jPanelRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 620, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonDruckenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDruckenActionPerformed
-        tabelle.drucken();
-    }//GEN-LAST:event_jButtonDruckenActionPerformed
-
-    private void jButtonLadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLadenActionPerformed
-        tabelle.csvEinlesen(jTableTabelle);
-        setTabelle(tabelle);
-        tabelle.addBuchungslisteToJTable(jTableTabelle);
-        tabelle.setTabelleGefuellt(true);
-        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
-    }//GEN-LAST:event_jButtonLadenActionPerformed
-
-    private void jButtonSpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSpeichernActionPerformed
-        tabelle.csvSpeichern(jTableTabelle);
-    }//GEN-LAST:event_jButtonSpeichernActionPerformed
-
-    private void jButtonHilfeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHilfeActionPerformed
-        GUIHilfe guiHilfe = new GUIHilfe();
-        guiHilfe.setVisible(true);
-    }//GEN-LAST:event_jButtonHilfeActionPerformed
-
-    private void jButtonSortierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortierenActionPerformed
-        tabelle.sortieren();
-        tabelle.addBuchungslisteToJTable(jTableTabelle);
-    }//GEN-LAST:event_jButtonSortierenActionPerformed
 
     private void jTableTabelleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableTabelleKeyTyped
         tabelle.addJTableToBuchungsliste(jTableTabelle);
@@ -215,6 +360,30 @@ public class GUI extends javax.swing.JFrame {
         tabelle.ueberschussBerechnen();
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jTableTabelleKeyReleased
+
+    private void jLabelHilfeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHilfeMouseClicked
+        jDialogHelp.setVisible(true);
+    }//GEN-LAST:event_jLabelHilfeMouseClicked
+
+    private void jLabelLadenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLadenMouseClicked
+        tabelle.csvEinlesen(jTableTabelle);
+        setTabelle(tabelle);
+        tabelle.addBuchungslisteToJTable(jTableTabelle);
+        tabelle.setTabelleGefuellt(true);
+        textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
+    }//GEN-LAST:event_jLabelLadenMouseClicked
+
+    private void jLabelSpeichernMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSpeichernMouseClicked
+        tabelle.csvSpeichern(jTableTabelle);
+    }//GEN-LAST:event_jLabelSpeichernMouseClicked
+
+    private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
+
+    }//GEN-LAST:event_jLabelSortierenMouseClicked
+
+    private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
+        tabelle.drucken();
+    }//GEN-LAST:event_jLabelDruckenMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -251,19 +420,30 @@ public class GUI extends javax.swing.JFrame {
     public void setTabelle(Tabelle tabelle) {
         this.tabelle = tabelle;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
-    private javax.swing.JButton jButtonDrucken;
-    private javax.swing.JButton jButtonHilfe;
-    private javax.swing.JButton jButtonLaden;
-    private javax.swing.JButton jButtonSortieren;
-    private javax.swing.JButton jButtonSpeichern;
+    private javax.swing.JDialog jDialogHelp;
+    private javax.swing.JLabel jLabelDrucken;
+    private javax.swing.JLabel jLabelHilfe;
+    private javax.swing.JLabel jLabelLaden;
+    private javax.swing.JLabel jLabelSortieren;
+    private javax.swing.JLabel jLabelSpeichern;
+    private javax.swing.JLabel jLabelUeberschrift2;
     private javax.swing.JLabel jLabelUeberschuss;
+    private javax.swing.JPanel jPanelDrucken;
+    private javax.swing.JPanel jPanelHilfe;
+    private javax.swing.JPanel jPanelLaden;
+    private javax.swing.JPanel jPanelLinks;
+    private javax.swing.JPanel jPanelPlatzhalter;
+    private javax.swing.JPanel jPanelRechts;
+    private javax.swing.JPanel jPanelSortieren;
+    private javax.swing.JPanel jPanelSpeichern;
+    private javax.swing.JScrollPane jScrollPaneHelp;
     private javax.swing.JScrollPane jScrollPaneTabelle;
     private javax.swing.JTable jTableTabelle;
+    private javax.swing.JTextArea jTextAreaHelp;
     private java.awt.TextField textFieldUeberschuss;
     // End of variables declaration//GEN-END:variables
 }
