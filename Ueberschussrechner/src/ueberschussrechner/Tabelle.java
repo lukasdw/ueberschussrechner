@@ -42,7 +42,7 @@ public class Tabelle {
             }
         }
         String line = "";
-        try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
@@ -57,7 +57,9 @@ public class Tabelle {
         ueberschussBerechnen();
     }
 
-    //https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
+    // https://www.tutorials.de/threads/array-in-eine-txt-schreiben.275850/
+    // https://www.w3schools.com/java/java_try_catch.asp
+    /* Speichert die Daten in eine CSV Datei */
     public void csvSpeichern(JTable jTableTabelle) {
         dateiAuswaehlen("Speichern");
         try {
@@ -87,7 +89,8 @@ public class Tabelle {
             }
         });*/
     }
-
+    
+    /* Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag addiert, bei Einnahmen subtrahiert */
     public void ueberschussBerechnen() {
         double summe = 0;
         for (int i = 0; i < this.buchungListe.size(); i++) {
@@ -97,6 +100,7 @@ public class Tabelle {
         this.ueberschuss = summe;
     }
 
+    /* Druckt die buchungsListe mit den dazugehörigen Funktionen der Klasse, Drucken, ohne Formatierung aus. */
     public void drucken() {
         drucker.addString("Überschussrechner");
         drucker.addLeerzeile();
@@ -116,30 +120,44 @@ public class Tabelle {
     }
 
     // https://www.youtube.com/watch?v=GAl1FSKvoFY
-    // Kopiert die Buchungsliste in die Tabelle
+    /* Die Funktion kopiert die Buchung-Arrayliste (buchungsListe) in die Tabelle (JTable jTableTabelle).
+       Als Erstes werden die Daten einer Zeile zugewiesen. Danach wird die Zeile in die Tabelle zugetragen. */
     public void addBuchungslisteToJTable(JTable jTableTabelle) {
+        int anzSpalten = 5;
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
-        Object rowData[] = new Object[5];
+        Object zeile[] = new Object[anzSpalten];
         for (int i = 0; i < buchungListe.size(); i++) {
-            rowData[0] = buchungListe.get(i).getBuchungsnummer();
-            rowData[1] = buchungListe.get(i).getBuchungsdatum();
-            rowData[2] = buchungListe.get(i).getBemerkung();
-            rowData[3] = buchungListe.get(i).getEinnahmen();
-            rowData[4] = buchungListe.get(i).getAusgaben();
-            model.addRow(rowData);
+            zeile[0] = buchungListe.get(i).getBuchungsnummer();
+            zeile[1] = buchungListe.get(i).getBuchungsdatum();
+            zeile[2] = buchungListe.get(i).getBemerkung();
+            zeile[3] = buchungListe.get(i).getEinnahmen();
+            zeile[4] = buchungListe.get(i).getAusgaben();
+            model.addRow(zeile);
         }
     }
 
     // https://www.youtube.com/watch?v=GAl1FSKvoFY
-    // Kopiert die Tabelle in die Buchungsliste
+    /* Die Funktion kopiert die Tabelle (JTable jTableTabelle) in die Buchung-Arrayliste (buchungsListe).
+       Um die verschiedenen Felder anzusprechen, benutzen wir zwei Zählerschleifen. Jede Zeile (Datensatz)
+       wird einer Buchung zugewiesen. */
     public void addJTableToBuchungsliste(JTable jTableTabelle) {
-        for (int row = 0; row < jTableTabelle.getRowCount(); row++) {
-            for (int col = 0; col < jTableTabelle.getColumnCount(); col++) {
-                if (col == 0) this.buchungListe.get(row).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(row, col));
-                if (col == 1) this.buchungListe.get(row).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(row, col));
-                if (col == 2) this.buchungListe.get(row).setBemerkung((String) jTableTabelle.getModel().getValueAt(row, col));
-                if (col == 3) this.buchungListe.get(row).setEinnahmen((double) jTableTabelle.getModel().getValueAt(row, col));
-                if (col == 4) this.buchungListe.get(row).setAusgaben((double) jTableTabelle.getModel().getValueAt(row, col));
+        for (int Zeile = 0; Zeile < jTableTabelle.getRowCount(); Zeile++) {
+            for (int Spalte = 0; Spalte < jTableTabelle.getColumnCount(); Spalte++) {
+                if (Spalte == 0) {
+                    this.buchungListe.get(Zeile).setBuchungsnummer((int) jTableTabelle.getModel().getValueAt(Zeile, Spalte));
+                }
+                if (Spalte == 1) {
+                    this.buchungListe.get(Zeile).setBuchungsdatum((String) jTableTabelle.getModel().getValueAt(Zeile, Spalte));
+                }
+                if (Spalte == 2) {
+                    this.buchungListe.get(Zeile).setBemerkung((String) jTableTabelle.getModel().getValueAt(Zeile, Spalte));
+                }
+                if (Spalte == 3) {
+                    this.buchungListe.get(Zeile).setEinnahmen((double) jTableTabelle.getModel().getValueAt(Zeile, Spalte));
+                }
+                if (Spalte == 4) {
+                    this.buchungListe.get(Zeile).setAusgaben((double) jTableTabelle.getModel().getValueAt(Zeile, Spalte));
+                }
             }
         }
     }
@@ -163,5 +181,4 @@ public class Tabelle {
     public void setTabelleGefuellt(boolean tabelleGefuellt) {
         this.tabelleGefuellt = tabelleGefuellt;
     }
-
 }
