@@ -89,7 +89,7 @@ public class Tabelle {
             }
         });*/
     }
-    
+
     /* Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag addiert, bei Einnahmen subtrahiert */
     public void ueberschussBerechnen() {
         double summe = 0;
@@ -134,6 +134,16 @@ public class Tabelle {
             zeile[4] = buchungListe.get(i).getAusgaben();
             model.addRow(zeile);
         }
+    }
+
+    public void csvAnlegen(JTable jTableTabelle) {
+        int anzSpalten = 5;
+        DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
+        Object zeile[] = new Object[anzSpalten];
+        zeile[0] = buchungsnummerCounter;
+        buchungsnummerCounter++;
+        model.addRow(zeile);
+        
     }
 
     // https://www.youtube.com/watch?v=GAl1FSKvoFY

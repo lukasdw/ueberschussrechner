@@ -29,6 +29,8 @@ public class GUI extends javax.swing.JFrame {
         JLabelUeberschrift = new javax.swing.JLabel();
         jLabelUeberschrift2 = new javax.swing.JLabel();
         jPanelPlatzhalter = new javax.swing.JPanel();
+        jPanelNeu = new javax.swing.JPanel();
+        jLabelNeu = new javax.swing.JLabel();
         jPanelSpeichern = new javax.swing.JPanel();
         jLabelSpeichern = new javax.swing.JLabel();
         jPanelLaden = new javax.swing.JPanel();
@@ -98,6 +100,39 @@ public class GUI extends javax.swing.JFrame {
         jPanelPlatzhalterLayout.setVerticalGroup(
             jPanelPlatzhalterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 2, Short.MAX_VALUE)
+        );
+
+        jPanelNeu.setBackground(new java.awt.Color(19, 59, 138));
+
+        jLabelNeu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelNeu.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNeu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNeu.setText("Neue Datei");
+        jLabelNeu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelNeuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelNeuLayout = new javax.swing.GroupLayout(jPanelNeu);
+        jPanelNeu.setLayout(jPanelNeuLayout);
+        jPanelNeuLayout.setHorizontalGroup(
+            jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelNeuLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanelNeuLayout.setVerticalGroup(
+            jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 42, Short.MAX_VALUE)
+            .addGroup(jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelNeuLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jPanelSpeichern.setBackground(new java.awt.Color(19, 59, 138));
@@ -236,17 +271,20 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addComponent(jLabelUeberschrift2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanelLinksLayout.setVerticalGroup(
             jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLinksLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(35, 35, 35)
                 .addComponent(JLabelUeberschrift)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelUeberschrift2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(30, 30, 30)
+                .addComponent(jPanelNeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jPanelLaden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,6 +423,10 @@ public class GUI extends javax.swing.JFrame {
         tabelle.drucken();
     }//GEN-LAST:event_jLabelDruckenMouseClicked
 
+    private void jLabelNeuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNeuMouseClicked
+       tabelle.csvAnlegen(jTableTabelle);
+    }//GEN-LAST:event_jLabelNeuMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -428,6 +470,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDrucken;
     private javax.swing.JLabel jLabelHilfe;
     private javax.swing.JLabel jLabelLaden;
+    private javax.swing.JLabel jLabelNeu;
     private javax.swing.JLabel jLabelSortieren;
     private javax.swing.JLabel jLabelSpeichern;
     private javax.swing.JLabel jLabelUeberschrift2;
@@ -436,6 +479,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelHilfe;
     private javax.swing.JPanel jPanelLaden;
     private javax.swing.JPanel jPanelLinks;
+    private javax.swing.JPanel jPanelNeu;
     private javax.swing.JPanel jPanelPlatzhalter;
     private javax.swing.JPanel jPanelRechts;
     private javax.swing.JPanel jPanelSortieren;
