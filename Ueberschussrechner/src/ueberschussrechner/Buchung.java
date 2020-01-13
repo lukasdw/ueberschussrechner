@@ -4,17 +4,17 @@ import java.util.*;
 
 public class Buchung {
 
-    private double ausgaben;
-    private double einnahmen;
+    private int buchungsnummer = 0;
     private String buchungsdatum;
     private String bemerkung;
-    private int buchungsnummer = 0;
+    private double einnahmen;
+    private double ausgaben;
     //private Calendar cal = Calendar.getInstance();
 
     //public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
-        this.buchungsdatum = buchungsdatum;
         this.buchungsnummer = buchungsnummer;
+        this.buchungsdatum = buchungsdatum;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
         this.ausgaben = ausgaben;
@@ -28,7 +28,6 @@ public class Buchung {
     public void setCal(Calendar cal) {
         this.cal = cal;
     }*/
-    
     public double getAusgaben() {
         return ausgaben;
     }

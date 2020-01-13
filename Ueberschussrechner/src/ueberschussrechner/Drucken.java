@@ -43,7 +43,7 @@ public class Drucken {
         }
     }
 
-    void druckeSeite(String title, boolean bRand) {
+    public void druckeSeite(String title, boolean bRand) {
         druckeSeite(title, bRand, false);
     }
 
@@ -53,7 +53,7 @@ public class Drucken {
      * @param bRand Rand
      * @param bLandscape ob es querformat(true) oder hochformat ist (false)
      **************************************************************************/
-    void druckeSeite(String title, boolean bRand, boolean bLandscape) {
+    public void druckeSeite(String title, boolean bRand, boolean bLandscape) {
 
         PageAttributes page = new PageAttributes();
 

@@ -11,7 +11,7 @@ public class Tabelle {
     private Drucken drucker = new Drucken();
     private String dateipfad;
     private double ueberschuss;
-    private int BuchungsnummerCounter = 1;
+    private int buchungsnummerCounter = 1;
     private boolean tabelleGefuellt = false;
 
     public void dateiAuswaehlen(String Option) {
@@ -47,9 +47,9 @@ public class Tabelle {
                 // use ";" as separator
                 String[] buffer = line.split(";");
                 // String[] datum = buffer[1].split(".");
-                // this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
-                this.buchungListe.add(new Buchung(this.BuchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
-                this.BuchungsnummerCounter++;
+                // this.buchungListe.add(new Buchung(this.buchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                this.buchungListe.add(new Buchung(this.buchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                this.buchungsnummerCounter++;
             }
         } catch (IOException e) {
             e.printStackTrace();
