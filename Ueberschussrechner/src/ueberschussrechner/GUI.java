@@ -309,13 +309,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelRechts.setBackground(new java.awt.Color(255, 255, 255));
 
         textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        textFieldUeberschuss.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jLabelUeberschuss.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jLabelUeberschuss.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelUeberschuss.setText("Überschuss");
 
         jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
-        jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -357,7 +358,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelRechtsLayout.setHorizontalGroup(
             jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
-                .addContainerGap(362, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .addComponent(jLabelUeberschuss)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +372,7 @@ public class GUI extends javax.swing.JFrame {
         jPanelRechtsLayout.setVerticalGroup(
             jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
-                .addContainerGap(470, Short.MAX_VALUE)
+                .addContainerGap(467, Short.MAX_VALUE)
                 .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
