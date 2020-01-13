@@ -308,7 +308,7 @@ public class GUI extends javax.swing.JFrame {
 
         jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
-        jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

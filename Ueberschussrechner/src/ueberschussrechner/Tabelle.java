@@ -90,12 +90,12 @@ public class Tabelle {
         });*/
     }
 
-    /* Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag addiert, bei Einnahmen subtrahiert */
+    /* Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag subtrahiert, bei Einnahmen addiert */
     public void ueberschussBerechnen() {
         double summe = 0;
         for (int i = 0; i < this.buchungListe.size(); i++) {
-            summe = this.buchungListe.get(i).getAusgaben() + summe;
-            summe = this.buchungListe.get(i).getEinnahmen() - summe;
+            summe = this.buchungListe.get(i).getAusgaben() - summe;
+            summe = this.buchungListe.get(i).getEinnahmen() + summe;
         }
         this.ueberschuss = summe;
     }
