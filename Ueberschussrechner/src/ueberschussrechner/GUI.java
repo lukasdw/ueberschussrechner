@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelDrucken = new javax.swing.JLabel();
         jPanelHilfe = new javax.swing.JPanel();
         jLabelHilfe = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanelRechts = new javax.swing.JPanel();
         textFieldUeberschuss = new java.awt.TextField();
         jLabelUeberschuss = new javax.swing.JLabel();
@@ -251,6 +252,9 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jLabelHilfe, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Version 1.0");
+
         javax.swing.GroupLayout jPanelLinksLayout = new javax.swing.GroupLayout(jPanelLinks);
         jPanelLinks.setLayout(jPanelLinksLayout);
         jPanelLinksLayout.setHorizontalGroup(
@@ -260,18 +264,19 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jPanelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanelLinksLayout.createSequentialGroup()
-                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLinksLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelLinksLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                            .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26)
+                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addComponent(jLabelUeberschrift2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelLinksLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         jPanelLinksLayout.setVerticalGroup(
             jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +298,9 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanelDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelHilfe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -467,6 +474,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
     private javax.swing.JDialog jDialogHelp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDrucken;
     private javax.swing.JLabel jLabelHilfe;
     private javax.swing.JLabel jLabelLaden;
