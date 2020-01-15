@@ -21,6 +21,10 @@ public class Buchung {
         //cal.set(Jahr, Monat, tag);
     }
 
+    public Buchung(int buchungsnummer) {
+        this.buchungsnummer = buchungsnummer;
+    }
+
     /*public Calendar getCal() {
         return cal;
     }

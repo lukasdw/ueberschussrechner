@@ -11,7 +11,9 @@ public class Tabelle {
     private Drucken drucker = new Drucken();
     private String dateipfad;
     private double ueberschuss;
-    private int buchungsnummerCounter = 1;
+    private int buchungsnummerCounter = 0;
+    private int buchungsnummerCounterVor;
+    private int anzSpalten = 5;
     private boolean tabelleGefuellt = false;
 
     public void dateiAuswaehlen(String Option) {
@@ -35,12 +37,6 @@ public class Tabelle {
 
     public void csvEinlesen(JTable jTableTabelle) {
         dateiAuswaehlen("Öffnen");
-        if (tabelleGefuellt = true) {
-            for (int i = 0; i < jTableTabelle.getRowCount(); i++) {
-                // Hier müsste eine Funktion hin, die die ganze Tabelle löscht
-                //((DefaultTableModel) jTableTabelle.getModel()).removeRow(i);
-            }
-        }
         String line = "";
         try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
@@ -48,7 +44,13 @@ public class Tabelle {
                 String[] buffer = line.split(";");
                 // String[] datum = buffer[1].split(".");
                 // this.buchungListe.add(new Buchung(this.buchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
-                this.buchungListe.add(new Buchung(this.buchungsnummerCounter, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                if (buffer[1].equals("null")) {
+                    buffer[1] = " ";
+                }
+                if (buffer[2].equals("null")) {
+                    buffer[2] = " ";
+                }
+                this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.buchungsnummerCounter++;
             }
         } catch (IOException e) {
@@ -94,7 +96,7 @@ public class Tabelle {
     public void ueberschussBerechnen() {
         double summe = 0;
         for (int i = 0; i < this.buchungListe.size(); i++) {
-            summe = this.buchungListe.get(i).getAusgaben() - summe;
+            summe = this.buchungListe.get(i).getAusgaben() + summe;
             summe = this.buchungListe.get(i).getEinnahmen() + summe;
         }
         this.ueberschuss = summe;
@@ -123,10 +125,9 @@ public class Tabelle {
     /* Die Funktion kopiert die Buchung-Arrayliste (buchungsListe) in die Tabelle (JTable jTableTabelle).
        Als Erstes werden die Daten einer Zeile zugewiesen. Danach wird die Zeile in die Tabelle zugetragen. */
     public void addBuchungslisteToJTable(JTable jTableTabelle) {
-        int anzSpalten = 5;
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
         Object zeile[] = new Object[anzSpalten];
-        for (int i = 0; i < buchungListe.size(); i++) {
+        for (int i = buchungsnummerCounterVor + 1; i < buchungListe.size(); i++) {
             zeile[0] = buchungListe.get(i).getBuchungsnummer();
             zeile[1] = buchungListe.get(i).getBuchungsdatum();
             zeile[2] = buchungListe.get(i).getBemerkung();
@@ -137,13 +138,17 @@ public class Tabelle {
     }
 
     public void csvAnlegen(JTable jTableTabelle) {
-        int anzSpalten = 5;
+        buchungsnummerCounterVor = buchungsnummerCounter;
+        this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1));
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
         Object zeile[] = new Object[anzSpalten];
-        zeile[0] = buchungsnummerCounter;
-        buchungsnummerCounter++;
+        zeile[0] = buchungListe.get(buchungsnummerCounter).getBuchungsnummer();
+        zeile[1] = buchungListe.get(buchungsnummerCounter).getBuchungsdatum();
+        zeile[2] = buchungListe.get(buchungsnummerCounter).getBemerkung();
+        zeile[3] = buchungListe.get(buchungsnummerCounter).getEinnahmen();
+        zeile[4] = buchungListe.get(buchungsnummerCounter).getAusgaben();
         model.addRow(zeile);
-        
+        buchungsnummerCounter++;
     }
 
     // https://www.youtube.com/watch?v=GAl1FSKvoFY
