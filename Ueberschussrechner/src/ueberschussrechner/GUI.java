@@ -415,7 +415,6 @@ public class GUI extends javax.swing.JFrame {
         tabelle.csvEinlesen(jTableTabelle);
         setTabelle(tabelle);
         tabelle.addBuchungslisteToJTable(jTableTabelle);
-        tabelle.setTabelleGefuellt(true);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jLabelLadenMouseClicked
 
@@ -424,7 +423,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSpeichernMouseClicked
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
-
+        tabelle.sortieren();
+        tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
     private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
@@ -432,7 +432,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelDruckenMouseClicked
 
     private void jLabelNeuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNeuMouseClicked
-       tabelle.csvAnlegen(jTableTabelle);
+        tabelle.csvAnlegen(jTableTabelle);
     }//GEN-LAST:event_jLabelNeuMouseClicked
 
     public static void main(String args[]) {

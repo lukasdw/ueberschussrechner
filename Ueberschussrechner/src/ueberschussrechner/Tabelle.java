@@ -10,11 +10,11 @@ public class Tabelle {
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
     private Drucken drucker = new Drucken();
     private String dateipfad;
-    private double ueberschuss;
+    private double ueberschuss = 0;
     private int buchungsnummerCounter = 0;
-    private int buchungsnummerCounterVor;
+    private int buchungsnummerCounterVor = 0;
     private int anzSpalten = 5;
-    private boolean tabelleGefuellt = false;
+    private boolean tabelleLeer = true;
 
     public void dateiAuswaehlen(String Option) {
         int csvFileInt = 0;
@@ -38,18 +38,29 @@ public class Tabelle {
     public void csvEinlesen(JTable jTableTabelle) {
         dateiAuswaehlen("Öffnen");
         String line = "";
+        int datumZahl = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
-                // String[] datum = buffer[1].split(".");
-                // this.buchungListe.add(new Buchung(this.buchungsnummerCounter, buffer[1], Integer.parseInt(datum[3]), Integer.parseInt(datum[2]), Integer.parseInt(datum[1]), buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+
                 if (buffer[1].equals("null")) {
                     buffer[1] = " ";
-                }
+                } /*else {
+                    String datumString = buffer[1];
+                    String[] datum = datumString.split(".");
+                    System.out.println(datum[0]);
+                    String Tag = datum[0];
+                    String Monat = datum[1];
+                    String Jahr = datum[2];
+                    String datumText = Jahr+Monat+Tag;
+                    datumZahl = Integer.parseInt(datumText);
+                }*/
                 if (buffer[2].equals("null")) {
                     buffer[2] = " ";
                 }
+
+                //this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4]), datumZahl));
                 this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
                 this.buchungsnummerCounter++;
             }
@@ -85,11 +96,16 @@ public class Tabelle {
 
     //https://www.youtube.com/watch?v=wzWFQTLn8hI
     public void sortieren() {
-        /*Collections.sort(buchungListe, new Comparator<Buchung>() {
-            public int compare(Buchung b1, Buchung b2) {
-                return b1.getCal().getTime().compareTo(b2.getCal().getTime());
+        Buchung buchung;
+        for (int i = 1; i < buchungListe.size(); i++) {
+            for (int j = 0; j < buchungListe.size() - i; j++) {
+                if (buchungListe.get(j).getDatumZahl() > buchungListe.get(j + 1).getDatumZahl()) {
+                    buchung = buchungListe.get(j);
+                    buchungListe.set(j, buchungListe.get(j + 1));
+                    buchungListe.set(j + 1, buchung);
+                }
             }
-        });*/
+        }
     }
 
     /* Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag subtrahiert, bei Einnahmen addiert */
@@ -127,7 +143,10 @@ public class Tabelle {
     public void addBuchungslisteToJTable(JTable jTableTabelle) {
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
         Object zeile[] = new Object[anzSpalten];
-        for (int i = buchungsnummerCounterVor + 1; i < buchungListe.size(); i++) {
+        if (tabelleLeer == false) {
+            buchungsnummerCounterVor++;
+        }
+        for (int i = buchungsnummerCounterVor; i < buchungListe.size(); i++) {
             zeile[0] = buchungListe.get(i).getBuchungsnummer();
             zeile[1] = buchungListe.get(i).getBuchungsdatum();
             zeile[2] = buchungListe.get(i).getBemerkung();
@@ -149,6 +168,7 @@ public class Tabelle {
         zeile[4] = buchungListe.get(buchungsnummerCounter).getAusgaben();
         model.addRow(zeile);
         buchungsnummerCounter++;
+        tabelleLeer = false;
     }
 
     // https://www.youtube.com/watch?v=GAl1FSKvoFY
@@ -187,13 +207,5 @@ public class Tabelle {
 
     public void setUeberschuss(double ueberschuss) {
         this.ueberschuss = ueberschuss;
-    }
-
-    public boolean isTabelleGefuellt() {
-        return tabelleGefuellt;
-    }
-
-    public void setTabelleGefuellt(boolean tabelleGefuellt) {
-        this.tabelleGefuellt = tabelleGefuellt;
     }
 }

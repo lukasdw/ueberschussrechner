@@ -9,15 +9,17 @@ public class Buchung {
     private String bemerkung;
     private double einnahmen;
     private double ausgaben;
+    private double datumZahl;
     //private Calendar cal = Calendar.getInstance();
 
-    //public Buchung(int buchungsnummer, String buchungsdatum, int tag, int Monat, int Jahr, String bemerkung, double einnahmen, double ausgaben) {
+    //public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben, int datumZahl) {
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsnummer = buchungsnummer;
         this.buchungsdatum = buchungsdatum;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
         this.ausgaben = ausgaben;
+        this.datumZahl = datumZahl;
         //cal.set(Jahr, Monat, tag);
     }
 
@@ -70,5 +72,13 @@ public class Buchung {
 
     public void setBuchungsnummer(int buchungsnummer) {
         this.buchungsnummer = buchungsnummer;
+    }
+
+    public double getDatumZahl() {
+        return datumZahl;
+    }
+
+    public void setDatumZahl(double datumZahl) {
+        this.datumZahl = datumZahl;
     }
 }
