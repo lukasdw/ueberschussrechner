@@ -418,6 +418,7 @@ public class GUI extends javax.swing.JFrame {
         tabelle.sortieren();
         tabelle.addBuchungslisteToJTable(jTableTabelle);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
+        jLabelNeu.setText("Neue Zeile");
     }//GEN-LAST:event_jLabelLadenMouseClicked
 
     private void jLabelSpeichernMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSpeichernMouseClicked
