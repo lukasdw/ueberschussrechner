@@ -435,6 +435,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jLabelNeuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNeuMouseClicked
         tabelle.csvAnlegen(jTableTabelle);
+        jLabelNeu.setText("Neue Zeile");
     }//GEN-LAST:event_jLabelNeuMouseClicked
 
     public static void main(String args[]) {
