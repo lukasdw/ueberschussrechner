@@ -10,30 +10,21 @@ public class Buchung {
     private double einnahmen;
     private double ausgaben;
     private double datumZahl;
-    //private Calendar cal = Calendar.getInstance();
 
-    //public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben, int datumZahl) {
-    public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
+    public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben, int datumZahl) {
+    //public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsnummer = buchungsnummer;
         this.buchungsdatum = buchungsdatum;
         this.bemerkung = bemerkung;
         this.einnahmen = einnahmen;
         this.ausgaben = ausgaben;
         this.datumZahl = datumZahl;
-        //cal.set(Jahr, Monat, tag);
     }
 
     public Buchung(int buchungsnummer) {
         this.buchungsnummer = buchungsnummer;
     }
 
-    /*public Calendar getCal() {
-        return cal;
-    }
-
-    public void setCal(Calendar cal) {
-        this.cal = cal;
-    }*/
     public double getAusgaben() {
         return ausgaben;
     }

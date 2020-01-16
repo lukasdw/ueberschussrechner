@@ -7,9 +7,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class Tabelle {
 
+    // eine Liste von Buchungen erstellt (letzendlich die Tabell)
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
+
+    // Drucker kann drucken
     private Drucken drucker = new Drucken();
+
+    // Dateipfad, der verwendeten Datei
     private String dateipfad;
+
+    // Variable zur Abspeicherung des Überschuss-Betrages
     private double ueberschuss = 0;
     private int buchungsnummerCounter = 0;
     private int buchungsnummerCounterVor = 0;
@@ -39,29 +46,23 @@ public class Tabelle {
         dateiAuswaehlen("Öffnen");
         String line = "";
         int datumZahl = 0;
-        try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
 
                 if (buffer[1].equals("null")) {
                     buffer[1] = " ";
-                } /*else {
-                    String datumString = buffer[1];
-                    String[] datum = datumString.split(".");
-                    System.out.println(datum[0]);
-                    String Tag = datum[0];
-                    String Monat = datum[1];
-                    String Jahr = datum[2];
-                    String datumText = Jahr+Monat+Tag;
+                } else {
+                    String[] datum = buffer[1].split("[.]");
+                    String datumText = datum[2] + datum[1] + datum[0];
                     datumZahl = Integer.parseInt(datumText);
-                }*/
+                }
                 if (buffer[2].equals("null")) {
                     buffer[2] = " ";
                 }
 
-                //this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4]), datumZahl));
-                this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4])));
+                this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4]), datumZahl));
                 this.buchungsnummerCounter++;
             }
         } catch (IOException e) {

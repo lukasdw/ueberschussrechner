@@ -314,7 +314,6 @@ public class GUI extends javax.swing.JFrame {
         jLabelUeberschuss.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelUeberschuss.setText("Überschuss");
 
-        jTableTabelle.setAutoCreateRowSorter(true);
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
         jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTableTabelle.setModel(new javax.swing.table.DefaultTableModel(
@@ -414,6 +413,7 @@ public class GUI extends javax.swing.JFrame {
     private void jLabelLadenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLadenMouseClicked
         tabelle.csvEinlesen(jTableTabelle);
         setTabelle(tabelle);
+        tabelle.sortieren();
         tabelle.addBuchungslisteToJTable(jTableTabelle);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
     }//GEN-LAST:event_jLabelLadenMouseClicked
@@ -424,7 +424,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
         tabelle.sortieren();
-        tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
     private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
