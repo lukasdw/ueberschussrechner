@@ -12,7 +12,6 @@ public class Buchung {
     private double datumZahl;
 
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben, int datumZahl) {
-    //public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben) {
         this.buchungsnummer = buchungsnummer;
         this.buchungsdatum = buchungsdatum;
         this.bemerkung = bemerkung;

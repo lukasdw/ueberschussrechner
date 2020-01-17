@@ -10,6 +10,8 @@ public class GUI extends javax.swing.JFrame {
     private Tabelle tabelle;
 
     public GUI() {
+        Tabelle tabelle = new Tabelle();
+        setTabelle(tabelle);
         initComponents();
     }
 
@@ -424,6 +426,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
         tabelle.sortieren();
+        tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
     private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
