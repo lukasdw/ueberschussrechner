@@ -13,6 +13,10 @@ public class GUI extends javax.swing.JFrame {
         Tabelle tabelle = new Tabelle();
         setTabelle(tabelle);
         initComponents();
+        jLabelSpeichern.setVisible(false);
+        jLabelSortieren.setVisible(false);
+        jLabelDrucken.setVisible(false);
+
     }
 
     /**
@@ -43,7 +47,7 @@ public class GUI extends javax.swing.JFrame {
         jLabelDrucken = new javax.swing.JLabel();
         jPanelHilfe = new javax.swing.JPanel();
         jLabelHilfe = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelVersion = new javax.swing.JLabel();
         jPanelRechts = new javax.swing.JPanel();
         textFieldUeberschuss = new java.awt.TextField();
         jLabelUeberschuss = new javax.swing.JLabel();
@@ -123,19 +127,13 @@ public class GUI extends javax.swing.JFrame {
             jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelNeuLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jLabelNeu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
         );
         jPanelNeuLayout.setVerticalGroup(
             jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 42, Short.MAX_VALUE)
             .addGroup(jPanelNeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelNeuLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
         );
 
         jPanelSpeichern.setBackground(new java.awt.Color(19, 59, 138));
@@ -254,8 +252,8 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jLabelHilfe, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Version 1.0");
+        jLabelVersion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelVersion.setText("Version 1.0");
 
         javax.swing.GroupLayout jPanelLinksLayout = new javax.swing.GroupLayout(jPanelLinks);
         jPanelLinks.setLayout(jPanelLinksLayout);
@@ -277,7 +275,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabelVersion)
                 .addContainerGap())
         );
         jPanelLinksLayout.setVerticalGroup(
@@ -302,7 +300,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelHilfe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabelVersion, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -419,6 +417,9 @@ public class GUI extends javax.swing.JFrame {
         tabelle.addBuchungslisteToJTable(jTableTabelle);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
         jLabelNeu.setText("Neue Zeile");
+        jLabelSpeichern.setVisible(true);
+        jLabelSortieren.setVisible(true);
+        jLabelDrucken.setVisible(true);
     }//GEN-LAST:event_jLabelLadenMouseClicked
 
     private void jLabelSpeichernMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSpeichernMouseClicked
@@ -437,6 +438,10 @@ public class GUI extends javax.swing.JFrame {
     private void jLabelNeuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNeuMouseClicked
         tabelle.csvAnlegen(jTableTabelle);
         jLabelNeu.setText("Neue Zeile");
+        tabelle.ueberschussBerechnen();
+        jLabelSpeichern.setVisible(true);
+        jLabelSortieren.setVisible(true);
+        jLabelDrucken.setVisible(true);
     }//GEN-LAST:event_jLabelNeuMouseClicked
 
     public static void main(String args[]) {
@@ -479,7 +484,6 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
     private javax.swing.JDialog jDialogHelp;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDrucken;
     private javax.swing.JLabel jLabelHilfe;
     private javax.swing.JLabel jLabelLaden;
@@ -488,6 +492,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSpeichern;
     private javax.swing.JLabel jLabelUeberschrift2;
     private javax.swing.JLabel jLabelUeberschuss;
+    private javax.swing.JLabel jLabelVersion;
     private javax.swing.JPanel jPanelDrucken;
     private javax.swing.JPanel jPanelHilfe;
     private javax.swing.JPanel jPanelLaden;
