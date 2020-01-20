@@ -13,10 +13,6 @@ public class GUI extends javax.swing.JFrame {
         Tabelle tabelle = new Tabelle();
         setTabelle(tabelle);
         initComponents();
-        jLabelSpeichern.setVisible(false);
-        jLabelSortieren.setVisible(false);
-        jLabelDrucken.setVisible(false);
-
     }
 
     /**
@@ -417,9 +413,6 @@ public class GUI extends javax.swing.JFrame {
         tabelle.addBuchungslisteToJTable(jTableTabelle);
         textFieldUeberschuss.setText(Double.toString(tabelle.getUeberschuss()));
         jLabelNeu.setText("Neue Zeile");
-        jLabelSpeichern.setVisible(true);
-        jLabelSortieren.setVisible(true);
-        jLabelDrucken.setVisible(true);
     }//GEN-LAST:event_jLabelLadenMouseClicked
 
     private void jLabelSpeichernMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSpeichernMouseClicked
@@ -432,16 +425,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
     private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
-        tabelle.drucken();
+        tabelle.drucken(jTableTabelle);
     }//GEN-LAST:event_jLabelDruckenMouseClicked
 
     private void jLabelNeuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNeuMouseClicked
         tabelle.csvAnlegen(jTableTabelle);
         jLabelNeu.setText("Neue Zeile");
         tabelle.ueberschussBerechnen();
-        jLabelSpeichern.setVisible(true);
-        jLabelSortieren.setVisible(true);
-        jLabelDrucken.setVisible(true);
     }//GEN-LAST:event_jLabelNeuMouseClicked
 
     public static void main(String args[]) {

@@ -1,6 +1,7 @@
 package ueberschussrechner;
 
 import java.io.*;
+import java.text.MessageFormat;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -9,16 +10,12 @@ public class Tabelle {
 
     // eine Liste von Buchungen erstellt (letzendlich die Tabell)
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
-
-    // Drucker kann drucken
-    private Drucken drucker = new Drucken();
-
     // Dateipfad, der verwendeten Datei
     private String dateipfad;
-
     // Variable zur Abspeicherung des Überschuss-Betrages
     private double ueberschuss = 0;
     private int buchungsnummerCounter = 0;
+    // Für "addBuchungslisteToJTable", um die Buchungsnummer richtig zu stellen
     private int buchungsnummerCounterVor = 0;
     private int anzSpalten = 5;
     private boolean tabelleLeer = true;
@@ -46,7 +43,7 @@ public class Tabelle {
         dateiAuswaehlen("Öffnen");
         String line = "";
         int datumZahl = 0;
-        try ( BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(this.dateipfad))) {
             while ((line = br.readLine()) != null) {
                 // use ";" as separator
                 String[] buffer = line.split(";");
@@ -133,20 +130,17 @@ public class Tabelle {
     }
 
     // Druckt die "buchungsListe" mithilfe den dazugehörigen Funktionen der Klasse, Drucken, ohne Formatierung aus.
-    public void drucken() {
-        drucker.addString("Überschussrechner");
-        drucker.addLeerzeile();
-        drucker.addString("Buchungsdatum    Buchungsnummer  Bemerkung   Einnahmen   Ausgaben");
-        for (int i = 0; i < this.buchungListe.size(); i++) {
-            drucker.addString(this.buchungListe.get(i).getBuchungsnummer()
-                    + "                              " + this.buchungListe.get(i).getBuchungsdatum()
-                    + "         " + this.buchungListe.get(i).getBemerkung()
-                    + "          " + this.buchungListe.get(i).getEinnahmen()
-                    + "          " + this.buchungListe.get(i).getAusgaben());
+    public void drucken(JTable jTableTabelle ) {
+        if (!tabelleLeer) {            
+            MessageFormat header = new MessageFormat("Report Print");
+            MessageFormat footer = new MessageFormat("page{0,number,integer}");
+            try{
+                jTableTabelle.print(JTable.PrintMode.NORMAL,header,footer);
+                
+            }catch(java.awt.print.PrinterException e){
+                System.out.println("Fehler");
+            }
         }
-        drucker.addLeerzeile();
-        drucker.addString("Ueberschuss:     " + this.ueberschuss);
-        drucker.druckeSeite("nix", false);
     }
 
     // Die Funktion kopiert die Buchung-Arrayliste (buchungsListe) in die Tabelle (JTable jTableTabelle).
