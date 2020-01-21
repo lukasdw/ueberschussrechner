@@ -420,6 +420,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSpeichernMouseClicked
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
+        tabelle.tabelleLeeren(jTableTabelle);
         tabelle.sortieren();
         tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jLabelSortierenMouseClicked
