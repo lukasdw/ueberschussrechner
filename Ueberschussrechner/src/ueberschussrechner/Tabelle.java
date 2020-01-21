@@ -19,6 +19,7 @@ public class Tabelle {
     private int buchungsnummerCounterVor = 0;
     private int anzSpalten = 5;
     private boolean tabelleLeer = true;
+    private ArrayList<Integer> bereitsvorhandeneBuchungsnummern = new ArrayList<Integer>();
 
     public void dateiAuswaehlen(String Option) {
         int csvFileInt = 0;
@@ -59,8 +60,9 @@ public class Tabelle {
                     buffer[2] = " ";
                 }
 
-                this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1, buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4]), datumZahl));
-                this.buchungsnummerCounter++;
+                this.buchungListe.add(new Buchung(Integer.parseInt(buffer[0]), buffer[1], buffer[2], Double.parseDouble(buffer[3]), Double.parseDouble(buffer[4]), datumZahl));
+                bereitsvorhandeneBuchungsnummern.add(Integer.parseInt(buffer[0]));
+                buchungsnummerCounter++;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -93,7 +95,13 @@ public class Tabelle {
     // Legt eine neue Zeile an
     public void csvAnlegen(JTable jTableTabelle) {
         buchungsnummerCounterVor = buchungsnummerCounter;
-        this.buchungListe.add(new Buchung(this.buchungsnummerCounter + 1));
+        for (int i = 0; i < bereitsvorhandeneBuchungsnummern.size(); i++) {
+            if (bereitsvorhandeneBuchungsnummern.get(i) == buchungsnummerCounter) {
+                buchungsnummerCounter++;
+                break;
+            }
+        }
+        this.buchungListe.add(new Buchung(this.buchungsnummerCounter));
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
         Object zeile[] = new Object[anzSpalten];
         zeile[0] = buchungListe.get(buchungsnummerCounter).getBuchungsnummer();
@@ -120,6 +128,12 @@ public class Tabelle {
         }
     }
 
+    public void tabelleLeeren(JTable jTableTabelle) {
+        DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+    }
+
     // Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag subtrahiert, bei Einnahmen addiert */
     public void ueberschussBerechnen() {
         double summe = 0;
@@ -129,15 +143,14 @@ public class Tabelle {
         this.ueberschuss = summe;
     }
 
-    // Druckt die "buchungsListe" mithilfe den dazugehörigen Funktionen der Klasse, Drucken, ohne Formatierung aus.
-    public void drucken(JTable jTableTabelle ) {
-        if (!tabelleLeer) {            
-            MessageFormat header = new MessageFormat("Report Print");
+    public void drucken(JTable jTableTabelle) {
+        if (!tabelleLeer) {
+            MessageFormat header = new MessageFormat("Buchungsliste");
             MessageFormat footer = new MessageFormat("page{0,number,integer}");
-            try{
-                jTableTabelle.print(JTable.PrintMode.NORMAL,header,footer);
-                
-            }catch(java.awt.print.PrinterException e){
+            try {
+                jTableTabelle.print(JTable.PrintMode.NORMAL, header, footer);
+
+            } catch (java.awt.print.PrinterException e) {
                 System.out.println("Fehler");
             }
         }
