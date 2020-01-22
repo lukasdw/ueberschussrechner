@@ -4,10 +4,11 @@ import java.io.*;
 import java.text.MessageFormat;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.*;
 
 public class Tabelle {
 
+    // Attribute
     private ArrayList<Buchung> buchungListe = new ArrayList<Buchung>();
     private ArrayList<Integer> bereitsvorhandeneBuchungsnummern = new ArrayList<Integer>();
     private String dateipfad = "null";
@@ -106,9 +107,9 @@ public class Tabelle {
             for (int zeile = 0; zeile < jTableTabelle.getRowCount(); zeile++) {
                 for (int spalte = 0; spalte < jTableTabelle.getColumnCount(); spalte++) {
                     bw.write(jTableTabelle.getModel().getValueAt(zeile, spalte) + ";");
+                    // Ist das schreiben der Zeile abgeschlossen, machen wir einen Zeilenumbruch.
+                    bw.write("\n");
                 }
-                // Ist das schreiben der Zeile abgeschlossen, machen wir einen Zeilenumbruch.
-                bw.write("\n");
             }
             // Wir schließen das Schreiben in der Datei.
             bw.close();

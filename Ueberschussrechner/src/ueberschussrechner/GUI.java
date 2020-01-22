@@ -7,8 +7,10 @@ import javax.swing.table.*;
 
 public class GUI extends javax.swing.JFrame {
 
+    // Attribute
     private Tabelle tabelle;
 
+    // Konstruktor
     public GUI() {
         Tabelle tabelle = new Tabelle();
         setTabelle(tabelle);
@@ -54,8 +56,9 @@ public class GUI extends javax.swing.JFrame {
 
         jTextAreaHelp.setEditable(false);
         jTextAreaHelp.setColumns(20);
+        jTextAreaHelp.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jTextAreaHelp.setRows(5);
-        jTextAreaHelp.setText("Scurr Scurr");
+        jTextAreaHelp.setText("Wie funktioniert der Buchungsrechner?\n\nSchritt 1:\nAls Erstes können Sie entweder eine neue Datei\nanlegen mit dem obersten Button auf der linken\nSeite oder eine Datei öffnen mit dem Button\n\"Datei laden\".\n\nSchritt 2:\nIst die neue Datei angelegt oder eingelesen,\nkönnen neue Zeilen durch einen Klick auf den\nButton, \"Neue Datei\", hinzugefügt werden und\ndurch klicken auf das jeweilige Feld in der\nTabelle bearbeitet werden.\n\nSchritt 3: (BETA)\nDurch klicken auf den Button, \"Sortieren\"\nwerden die Daten chronologisch absteigend\nsortiert\n\nSchritt 4:\nSie können diese Tabelle nun als CSV abspeichern.\nDurch das Klicken auf den Button, \"Datei speichern\".\nKönnen Sie das Projekt am Ort ihrer Wahl abspeichern.\n\nSchritt 5:\nFalls Sie ihre Tabelle nicht in digitaler Form, sondern\nin Papierform haben wollen. Können Sie über\nden Button, \"Drucken\" ihre Tabelle drucken.");
         jScrollPaneHelp.setViewportView(jTextAreaHelp);
 
         javax.swing.GroupLayout jDialogHelpLayout = new javax.swing.GroupLayout(jDialogHelp.getContentPane());
@@ -63,34 +66,38 @@ public class GUI extends javax.swing.JFrame {
         jDialogHelpLayout.setHorizontalGroup(
             jDialogHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogHelpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jDialogHelpLayout.setVerticalGroup(
             jDialogHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogHelpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelLinks.setBackground(new java.awt.Color(12, 28, 61));
+        jPanelLinks.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         JLabelUeberschrift.setBackground(new java.awt.Color(255, 255, 255));
         JLabelUeberschrift.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
         JLabelUeberschrift.setForeground(new java.awt.Color(255, 255, 255));
         JLabelUeberschrift.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabelUeberschrift.setText("Überschussrechner");
+        jPanelLinks.add(JLabelUeberschrift, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 35, 248, -1));
 
         jLabelUeberschrift2.setBackground(new java.awt.Color(255, 255, 255));
         jLabelUeberschrift2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabelUeberschrift2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUeberschrift2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelUeberschrift2.setText("Leon Tergast, Lutz Peil und Lukas de Weerdt");
+        jPanelLinks.add(jLabelUeberschrift2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 300, -1));
 
         jPanelPlatzhalter.setPreferredSize(new java.awt.Dimension(0, 2));
 
@@ -98,12 +105,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelPlatzhalter.setLayout(jPanelPlatzhalterLayout);
         jPanelPlatzhalterLayout.setHorizontalGroup(
             jPanelPlatzhalterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 248, Short.MAX_VALUE)
         );
         jPanelPlatzhalterLayout.setVerticalGroup(
             jPanelPlatzhalterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 2, Short.MAX_VALUE)
         );
+
+        jPanelLinks.add(jPanelPlatzhalter, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 105, 248, -1));
 
         jPanelNeu.setBackground(new java.awt.Color(19, 59, 138));
 
@@ -132,6 +141,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
         );
 
+        jPanelLinks.add(jPanelNeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 137, -1, -1));
+
         jPanelSpeichern.setBackground(new java.awt.Color(19, 59, 138));
 
         jLabelSpeichern.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -148,12 +159,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelSpeichern.setLayout(jPanelSpeichernLayout);
         jPanelSpeichernLayout.setHorizontalGroup(
             jPanelSpeichernLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         jPanelSpeichernLayout.setVerticalGroup(
             jPanelSpeichernLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
+
+        jPanelLinks.add(jPanelSpeichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 254, 300, -1));
 
         jPanelLaden.setBackground(new java.awt.Color(19, 59, 138));
 
@@ -171,12 +184,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelLaden.setLayout(jPanelLadenLayout);
         jPanelLadenLayout.setHorizontalGroup(
             jPanelLadenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         jPanelLadenLayout.setVerticalGroup(
             jPanelLadenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
+
+        jPanelLinks.add(jPanelLaden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 194, 300, -1));
 
         jPanelSortieren.setBackground(new java.awt.Color(19, 59, 138));
 
@@ -194,12 +209,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelSortieren.setLayout(jPanelSortierenLayout);
         jPanelSortierenLayout.setHorizontalGroup(
             jPanelSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         jPanelSortierenLayout.setVerticalGroup(
             jPanelSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
+
+        jPanelLinks.add(jPanelSortieren, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 314, 300, -1));
 
         jPanelDrucken.setBackground(new java.awt.Color(19, 59, 138));
 
@@ -217,12 +234,14 @@ public class GUI extends javax.swing.JFrame {
         jPanelDrucken.setLayout(jPanelDruckenLayout);
         jPanelDruckenLayout.setHorizontalGroup(
             jPanelDruckenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         jPanelDruckenLayout.setVerticalGroup(
             jPanelDruckenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelDrucken, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
+
+        jPanelLinks.add(jPanelDrucken, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 374, 300, -1));
 
         jPanelHilfe.setBackground(new java.awt.Color(19, 59, 138));
         jPanelHilfe.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -248,67 +267,24 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jLabelHilfe, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jPanelLinks.add(jPanelHilfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 459, -1, -1));
+
         jLabelVersion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelVersion.setText("Version 1.0");
-
-        javax.swing.GroupLayout jPanelLinksLayout = new javax.swing.GroupLayout(jPanelLinks);
-        jPanelLinks.setLayout(jPanelLinksLayout);
-        jPanelLinksLayout.setHorizontalGroup(
-            jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelDrucken, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelSpeichern, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelLaden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelSortieren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanelLinksLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                    .addComponent(JLabelUeberschrift, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addComponent(jLabelUeberschrift2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanelNeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanelLinksLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelHilfe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelVersion)
-                .addContainerGap())
-        );
-        jPanelLinksLayout.setVerticalGroup(
-            jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelLinksLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(JLabelUeberschrift)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelUeberschrift2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelPlatzhalter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jPanelNeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jPanelLaden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelSpeichern, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanelDrucken, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(jPanelLinksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelHilfe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelVersion, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
+        jPanelLinks.add(jLabelVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
         getContentPane().add(jPanelLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 510));
 
         jPanelRechts.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelRechts.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textFieldUeberschuss.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         textFieldUeberschuss.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jPanelRechts.add(textFieldUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 467, 230, -1));
 
         jLabelUeberschuss.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelUeberschuss.setText("Überschuss");
+        jPanelRechts.add(jLabelUeberschuss, new org.netbeans.lib.awtextra.AbsoluteConstraints(352, 467, -1, -1));
 
         jTableTabelle.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, null, java.awt.Color.black));
         jTableTabelle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -347,39 +323,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         jScrollPaneTabelle.setViewportView(jTableTabelle);
+        if (jTableTabelle.getColumnModel().getColumnCount() > 0) {
+            jTableTabelle.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTableTabelle.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTableTabelle.getColumnModel().getColumn(2).setPreferredWidth(250);
+        }
 
-        javax.swing.GroupLayout jPanelRechtsLayout = new javax.swing.GroupLayout(jPanelRechts);
-        jPanelRechts.setLayout(jPanelRechtsLayout);
-        jPanelRechtsLayout.setHorizontalGroup(
-            jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
-                .addContainerGap(352, Short.MAX_VALUE)
-                .addComponent(jLabelUeberschuss)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
-                    .addContainerGap(20, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(20, Short.MAX_VALUE)))
-        );
-        jPanelRechtsLayout.setVerticalGroup(
-            jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRechtsLayout.createSequentialGroup()
-                .addContainerGap(467, Short.MAX_VALUE)
-                .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldUeberschuss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
-            .addGroup(jPanelRechtsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelRechtsLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addComponent(jScrollPaneTabelle, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(48, Short.MAX_VALUE)))
-        );
+        jPanelRechts.add(jScrollPaneTabelle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 21, 640, 441));
 
-        getContentPane().add(jPanelRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 620, 510));
+        getContentPane().add(jPanelRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 670, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -420,8 +372,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSpeichernMouseClicked
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
-        tabelle.tabelleLeeren(jTableTabelle);
+        tabelle.addJTableToBuchungsliste(jTableTabelle);
         tabelle.sortieren();
+        tabelle.tabelleLeeren(jTableTabelle);
         tabelle.addBuchungslisteToJTable(jTableTabelle);
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
@@ -467,6 +420,7 @@ public class GUI extends javax.swing.JFrame {
         });
     }
 
+    // Getter und Setter
     public void setTabelle(Tabelle tabelle) {
         this.tabelle = tabelle;
     }

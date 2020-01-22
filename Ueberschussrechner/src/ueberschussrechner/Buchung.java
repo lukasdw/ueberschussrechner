@@ -4,13 +4,15 @@ import java.util.*;
 
 public class Buchung {
 
+    // Attribute
     private int buchungsnummer = 0;
     private String buchungsdatum;
     private String bemerkung;
     private double einnahmen;
-    private double ausgaben;
-    private double datumZahl;
+    private double ausgaben = 0;
+    private double datumZahl = 0;
 
+    // Konstruktor #1
     public Buchung(int buchungsnummer, String buchungsdatum, String bemerkung, double einnahmen, double ausgaben, int datumZahl) {
         this.buchungsnummer = buchungsnummer;
         this.buchungsdatum = buchungsdatum;
@@ -20,10 +22,12 @@ public class Buchung {
         this.datumZahl = datumZahl;
     }
 
+    // Konstruktor #2
     public Buchung(int buchungsnummer) {
         this.buchungsnummer = buchungsnummer;
     }
 
+    //Getter und Setter
     public double getAusgaben() {
         return ausgaben;
     }
