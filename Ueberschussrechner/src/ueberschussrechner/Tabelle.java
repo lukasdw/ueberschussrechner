@@ -184,7 +184,7 @@ public class Tabelle {
     public void tabelleLeeren(JTable jTableTabelle) {
         DefaultTableModel model = (DefaultTableModel) jTableTabelle.getModel();
         model.getDataVector().removeAllElements();
-        model.fireTableDataChanged();
+        model.fireTableStructureChanged();
     }
 
     // Berechnet den Ueberschuss aus. Bei Ausgaben wird der Betrag subtrahiert, bei Einnahmen addiert */
