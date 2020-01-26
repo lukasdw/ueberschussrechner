@@ -29,6 +29,9 @@ public class GUI extends javax.swing.JFrame {
         jDialogHelp = new javax.swing.JDialog();
         jScrollPaneHelp = new javax.swing.JScrollPane();
         jTextAreaHelp = new javax.swing.JTextArea();
+        jDialogSortieren = new javax.swing.JDialog();
+        jScrollPaneSortieren = new javax.swing.JScrollPane();
+        jTextAreaSortieren = new javax.swing.JTextArea();
         jPanelLinks = new javax.swing.JPanel();
         JLabelUeberschrift = new javax.swing.JLabel();
         jLabelUeberschrift2 = new javax.swing.JLabel();
@@ -76,6 +79,32 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPaneHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
                 .addGap(11, 11, 11))
+        );
+
+        jDialogSortieren.setMinimumSize(new java.awt.Dimension(550, 550));
+
+        jTextAreaSortieren.setEditable(false);
+        jTextAreaSortieren.setColumns(20);
+        jTextAreaSortieren.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jTextAreaSortieren.setRows(5);
+        jTextAreaSortieren.setText("Das Sortieren wird in der\nnächsten Version implementiert");
+        jScrollPaneSortieren.setViewportView(jTextAreaSortieren);
+
+        javax.swing.GroupLayout jDialogSortierenLayout = new javax.swing.GroupLayout(jDialogSortieren.getContentPane());
+        jDialogSortieren.getContentPane().setLayout(jDialogSortierenLayout);
+        jDialogSortierenLayout.setHorizontalGroup(
+            jDialogSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSortierenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        jDialogSortierenLayout.setVerticalGroup(
+            jDialogSortierenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogSortierenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneSortieren, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -372,10 +401,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelSpeichernMouseClicked
 
     private void jLabelSortierenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelSortierenMouseClicked
-        tabelle.addJTableToBuchungsliste(jTableTabelle);
+        jDialogSortieren.setVisible(true);
+        /*tabelle.addJTableToBuchungsliste(jTableTabelle);
         tabelle.sortieren();
         tabelle.tabelleLeeren(jTableTabelle);
-        tabelle.addBuchungslisteToJTable(jTableTabelle);
+        tabelle.addBuchungslisteToJTable(jTableTabelle);*/
     }//GEN-LAST:event_jLabelSortierenMouseClicked
 
     private void jLabelDruckenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDruckenMouseClicked
@@ -429,6 +459,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelUeberschrift;
     private javax.swing.JDialog jDialogHelp;
+    private javax.swing.JDialog jDialogSortieren;
     private javax.swing.JLabel jLabelDrucken;
     private javax.swing.JLabel jLabelHilfe;
     private javax.swing.JLabel jLabelLaden;
@@ -448,9 +479,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelSortieren;
     private javax.swing.JPanel jPanelSpeichern;
     private javax.swing.JScrollPane jScrollPaneHelp;
+    private javax.swing.JScrollPane jScrollPaneSortieren;
     private javax.swing.JScrollPane jScrollPaneTabelle;
     private javax.swing.JTable jTableTabelle;
     private javax.swing.JTextArea jTextAreaHelp;
+    private javax.swing.JTextArea jTextAreaSortieren;
     private java.awt.TextField textFieldUeberschuss;
     // End of variables declaration//GEN-END:variables
 }
