@@ -145,11 +145,11 @@ public class Tabelle {
         fungiert, gespeichert. Diese Zeile wird dann als Zeile in der Tabelle
         hinzugefügt. */
         Object zeile[] = new Object[anzSpalten];
-        zeile[0] = buchungListe.get(this.BuchungsnummerGenerator).getBuchungsnummer();
-        zeile[1] = buchungListe.get(this.BuchungsnummerGenerator).getBuchungsdatum();
-        zeile[2] = buchungListe.get(this.BuchungsnummerGenerator).getBemerkung();
-        zeile[3] = buchungListe.get(this.BuchungsnummerGenerator).getEinnahmen();
-        zeile[4] = buchungListe.get(this.BuchungsnummerGenerator).getAusgaben();
+        zeile[0] = buchungListe.get(this.anzahlBuchungen).getBuchungsnummer();
+        zeile[1] = buchungListe.get(this.anzahlBuchungen).getBuchungsdatum();
+        zeile[2] = buchungListe.get(this.anzahlBuchungen).getBemerkung();
+        zeile[3] = buchungListe.get(this.anzahlBuchungen).getEinnahmen();
+        zeile[4] = buchungListe.get(this.anzahlBuchungen).getAusgaben();
         model.addRow(zeile);
 
         /* Wurde die Buchung mit der Nummer aus dem "BuchungsnummerGenerator"
